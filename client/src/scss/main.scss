@@ -1,0 +1,25 @@
+@import "./variable";
+@import "./project.scss";
+
+html {
+  font-family: "Roboto Mono";
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--back);
+  font-family: var(--font-family-sans-serif);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(transparent, var(--success));
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(transparent, var(--primary));
+}
