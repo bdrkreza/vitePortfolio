@@ -1,17 +1,12 @@
 import { Container } from "@mui/material";
-import { createContext, useState } from "react";
+import React from "react";
+import { Outlet } from "react-router-dom";
 import Footer from "./footer/footer";
 import Navbar from "./navbar/navbar";
-interface IThemeContext {
-  theme: string;
-  setTheme: any;
-}
 
-export const ThemeContext = createContext({} as IThemeContext);
-export default function Layout({ children }: any) {
-  const [theme, setTheme] = useState("light");
+export default function HomeLayout() {
   return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
+    <React.Fragment>
       <Navbar />
       <Container
         sx={{
@@ -24,9 +19,9 @@ export default function Layout({ children }: any) {
           },
         }}
       >
-        {children}
+        <Outlet />
       </Container>
       <Footer />
-    </ThemeContext.Provider>
+    </React.Fragment>
   );
 }
