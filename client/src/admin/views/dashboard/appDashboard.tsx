@@ -1,3 +1,9 @@
+import DashTop from "./section/dash-top";
+
 export default function AppDashboard() {
-  return <div>dashboard</div>;
+  return (
+    <div>
+      <DashTop />
+    </div>
+  );
 }
