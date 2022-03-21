@@ -19,6 +19,11 @@ export const nav_item = [
     screen: project,
   },
   {
+    path: "about",
+    label: "About",
+    screen: about,
+  },
+  {
     path: "service",
     label: "Service",
     screen: service,
@@ -28,11 +33,7 @@ export const nav_item = [
     label: "Pricing",
     screen: pricing,
   },
-  {
-    path: "about",
-    label: "About",
-    screen: about,
-  },
+
   {
     path: "contact",
     label: "Contact",

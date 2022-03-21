@@ -1,4 +1,4 @@
-import NoMatch from "./404/404";
+import Page404 from "./404/Page404";
 import AboutUs from "./aboutUs/aboutUs";
 import Contact from "./contact/contact";
 import Home from "./home/home";
@@ -10,7 +10,7 @@ import Service from "./service/service";
 import SignUp from "./signup/signup";
 
 export {
-  NoMatch,
+  Page404,
   Home,
   AboutUs,
   Project,

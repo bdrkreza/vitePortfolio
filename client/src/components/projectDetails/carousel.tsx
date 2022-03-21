@@ -13,7 +13,8 @@ import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";
 // import required modules
 
-export default function ProjectCarousel({ post }: any) {
+export default function ProjectCarousel({ post, link }: any) {
+  console.log(post);
   return (
     <>
       <Swiper
@@ -31,10 +32,8 @@ export default function ProjectCarousel({ post }: any) {
       >
         {post.map((item: any, index: any) => (
           <SwiperSlide key={index}>
-            <Paper
-              style={{ backgroundImage: `url(${item.image})` }}
-              sx={classes.paper}
-            >
+            <Paper sx={classes.paper}>
+              <img src={item} alt="" />
               <Box sx={classes.paper.box} />
               <Grid container>
                 <Grid item md={6}>
@@ -57,7 +56,7 @@ export default function ProjectCarousel({ post }: any) {
                 </Grid>
               </Grid>
 
-              <a href="" target="_blank">
+              <a href={link} target="_blank">
                 <Box sx={classes.box}>
                   <AiFillLayout />
                   <IconButton sx={classes.box.btn}>
@@ -79,7 +78,7 @@ const classes = {
     position: "relative",
     color: "#fff",
     width: "100%",
-    minHeight: "400px",
+    height: "100%",
     mb: 2,
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",

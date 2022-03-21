@@ -1,15 +1,15 @@
 import { Button, Paper } from "@mui/material";
 import { Link } from "react-router-dom";
 
-export default function GalleryCart({ item }: any) {
+export default function GalleryCart({ page }: any) {
   return (
     <div style={{ textAlign: "center" }}>
-      <Link to={item.link} style={{ textDecoration: "none" }}>
+      <Link to={page.path} style={{ textDecoration: "none" }}>
         <Paper sx={classes.rootBox}>
-          <img src={item.img} alt="" />
+          <img src={page.screen} alt="" />
         </Paper>
         <Button sx={{ mt: 2, mb: 2 }} variant="outlined">
-          {item.title}
+          {page.level}
         </Button>
       </Link>
     </div>

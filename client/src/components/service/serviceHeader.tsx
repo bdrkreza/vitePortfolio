@@ -8,7 +8,7 @@ const ImageSrc = styled("span")({
   right: 0,
   top: 0,
   bottom: 0,
-  opacity: 0.6,
+  opacity: 0.7,
   height: "600px",
   backgroundSize: "cover",
   backgroundPosition: "center 100%",

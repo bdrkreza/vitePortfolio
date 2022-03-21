@@ -1,4 +1,4 @@
-import Layout from "./common/layout";
+import HomeLayout from "./common/homeLayout";
 import OurGallery from "./home/gallery/our_gallery";
 import Header from "./home/header/header";
-export { Layout, Header, OurGallery };
+export { HomeLayout, Header, OurGallery };

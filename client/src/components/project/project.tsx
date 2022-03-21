@@ -1,5 +1,5 @@
 import { Grid } from "@mui/material";
-import { projectIm } from "../../services/data/data";
+import { data } from "../../services/data/projectdata";
 import ProjectCard from "./projectCard";
 import TabsItems from "./tabsItems";
 
@@ -14,8 +14,8 @@ export default function ProjectSection() {
       </div>
       <TabsItems />
       <Grid pt={5} container spacing={3}>
-        {projectIm.map((item) => (
-          <Grid item md={12} key={item.id}>
+        {data.map((item) => (
+          <Grid item md={12} key={item._id}>
             <ProjectCard item={item} />
           </Grid>
         ))}
