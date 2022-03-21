@@ -8,7 +8,7 @@ import {
   AppProject,
   AppSetting,
 } from "./admin/views";
-import Chat from "./constants/chat";
+import { MessengerChat } from "./constants/chatCustomer";
 import { HomeLayout } from "./core-ui";
 import {
   AboutUs,
@@ -48,7 +48,13 @@ export default function AppRoutes() {
           <Route path="app-setting" element={<AppSetting />} />
         </Route>
       </Routes>
-      <Chat />
+      <MessengerChat
+        pageId="106233291300205"
+        loggedInGreeting="Hello logged in user!"
+        loggedOutGreeting="Hello stranger!"
+        themeColor="#F2F3G2"
+        height={24}
+      />
     </>
   );
 }
