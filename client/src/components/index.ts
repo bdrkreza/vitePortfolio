@@ -5,6 +5,7 @@ import Work from "./aboutUs/work";
 import ContactSection from "./contact/contact";
 import GoogleMap from "./contact/googleMap";
 import PricingSection from "./pricing/pricing";
+import PricingHeader from "./pricing/pricingHeader";
 import PricingTop from "./pricing/pricingTop";
 import ProjectSection from "./project/project";
 import ProjectDetailsSection from "./projectDetails/projectDetails";
@@ -22,6 +23,7 @@ export {
   ServiceHeader,
   ServiceCard,
   PricingSection,
+  PricingHeader,
   PricingTop,
   ContactSection,
   GoogleMap,

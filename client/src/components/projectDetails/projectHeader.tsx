@@ -30,12 +30,19 @@ const post = [
   },
 ];
 
-function ProjectHeader() {
+function ProjectHeader({ screenshots }: any) {
   return (
     <Paper sx={{ background: "var(--darker)" }}>
-      <ProjectCarousel post={post} />
+      <ProjectCarousel
+        post={screenshots.screenshots}
+        link={screenshots.liveLink}
+      />
       <Box sx={classes.rootBox}>
-        <a href="" target="_blank" style={{ textDecoration: "none" }}>
+        <a
+          href={screenshots.liveLink}
+          target="_blank"
+          style={{ textDecoration: "none" }}
+        >
           <Button variant="outlined" sx={{ mb: 2 }}>
             <Button sx={classes.button}>
               Live Preview
@@ -47,16 +54,6 @@ function ProjectHeader() {
     </Paper>
   );
 }
-
-// MainFeaturedPost.propTypes = {
-//   post: PropTypes.shape({
-//     description: PropTypes.string.isRequired,
-//     image: PropTypes.string.isRequired,
-//     imageText: PropTypes.string.isRequired,
-//     linkText: PropTypes.string.isRequired,
-//     title: PropTypes.string.isRequired,
-//   }).isRequired,
-// };
 
 export default ProjectHeader;
 

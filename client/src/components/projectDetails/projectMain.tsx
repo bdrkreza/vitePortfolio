@@ -1,6 +1,5 @@
 import { Grid, Typography } from "@mui/material";
-import image from "../../assets/images/portfolio/gallery/projectScreen.png";
-export default function ProjectMain() {
+export default function ProjectMain({ project }: any) {
   return (
     <Grid item xs={12} md={8}>
       <Typography
@@ -11,7 +10,7 @@ export default function ProjectMain() {
         From the firehose
       </Typography>
       <hr />
-      <img src={image} style={{ width: "100%" }} alt="" />
+      <img src={project.imageLevel} style={{ width: "100%" }} alt="" />
     </Grid>
   );
 }

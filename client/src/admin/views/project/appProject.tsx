@@ -1,9 +1,40 @@
-import { Grid } from "@mui/material";
+import { Button, Grid, Stack, Typography } from "@mui/material";
+import React from "react";
+import { Link as RouterLink } from "react-router-dom";
+import AddProject from "./section/addProject";
 import AppProjectCard from "./section/appProjectCard";
-
+import ProjectSearch from "./section/projectSearch";
+import ProjectSort from "./section/projectSort";
+const SORT_OPTIONS = [
+  { value: "latest", label: "Latest" },
+  { value: "popular", label: "Popular" },
+  { value: "oldest", label: "Oldest" },
+];
 export default function AppProject() {
   return (
-    <div>
+    <React.Fragment>
+      <Stack
+        direction="row"
+        alignItems="center"
+        justifyContent="space-between"
+        mb={5}
+      >
+        <Typography variant="h4" gutterBottom>
+          Project
+        </Typography>
+        <AddProject />
+      </Stack>
+
+      <Stack
+        mb={5}
+        direction="row"
+        alignItems="center"
+        justifyContent="space-between"
+      >
+        <ProjectSearch />
+        <ProjectSort options={SORT_OPTIONS} />
+      </Stack>
+
       <Grid
         container
         spacing={{ xs: 2, md: 3 }}
@@ -15,6 +46,6 @@ export default function AppProject() {
           </Grid>
         ))}
       </Grid>
-    </div>
+    </React.Fragment>
   );
 }

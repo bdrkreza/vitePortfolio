@@ -56,7 +56,7 @@ export default function AppBlog() {
         columns={{ xs: 4, sm: 8, md: 12 }}
       >
         {Array.from(Array(6)).map((_, index) => (
-          <Grid item xs={2} sm={4} md={4} key={index}>
+          <Grid item xs={12} sm={4} md={4} key={index}>
             <BlogPostCard key={index} />
           </Grid>
         ))}

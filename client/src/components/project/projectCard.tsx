@@ -17,9 +17,8 @@ import { Link } from "react-router-dom";
 
 export default function ProjectCard({ item }: any) {
   const classes = useStyles();
-  const value = 3.5;
   return (
-    <>
+    <Paper sx={{ borderBottom: 1, borderColor: "var(--color-title)" }}>
       <Grid container className={classes.gird}>
         <Grid item md={5} xs={12}>
           <Tooltip
@@ -30,19 +29,20 @@ export default function ProjectCard({ item }: any) {
                   color: "lightblue",
                 }}
               >
-                Lyndon - Agency & Portfolio Theme
+                {item.title}
               </Typography>
             }
             followCursor
             placement="right-end"
           >
-            <Link to={`/project/${item.id}`}>
+            <Link to={`/project/${item._id}`}>
               <Paper className={classes.paper1}>
-                <img className={classes.image} src={item.img} alt="" />
+                <img className={classes.image} src={item.image} alt="" />
               </Paper>
             </Link>
           </Tooltip>
         </Grid>
+
         <Grid item md={5} xs={12}>
           <Tooltip
             title={
@@ -52,25 +52,23 @@ export default function ProjectCard({ item }: any) {
                   color: "lightblue",
                 }}
               >
-                Lyndon - Agency & Portfolio Theme
+                {item.title}
               </Typography>
             }
             followCursor
             placement="right-end"
           >
-            <Link to={`/project/${item.id}`} className={classes.link}>
+            <Link to={`/project/${item._id}`} className={classes.link}>
               <Paper className={classes.paper2}>
                 <List className={classes.title}>
-                  <h1>Lyndon - Agency & Portfolio Theme</h1>
-                  <Typography variant="body2">
-                    by rkreza - Themes in Portfolio
-                  </Typography>
+                  <h1>{item.title}</h1>
+                  <Typography variant="body2">{item.author}</Typography>
                 </List>
 
                 <ul className={classes.list}>
-                  <li>Portfolio theme for modern creative websites</li>
-                  <li>set of agency designer and artist templates</li>
-                  <li>Elementor page builder compatibility</li>
+                  {item.tags.map((tags: any) => (
+                    <li>{tags}</li>
+                  ))}
                 </ul>
               </Paper>
             </Link>
@@ -97,7 +95,7 @@ export default function ProjectCard({ item }: any) {
             <Box>
               <Rating
                 name="text-feedback"
-                value={value}
+                value={item.rating}
                 readOnly
                 precision={0.5}
                 emptyIcon={
@@ -106,7 +104,7 @@ export default function ProjectCard({ item }: any) {
               />
             </Box>
             <Typography className={classes.date}>
-              last updated 05-Mar-22
+              last updated {item.date}
             </Typography>
             <Button sx={{ mt: 2, mb: 2 }} variant="outlined">
               Live Preview
@@ -114,7 +112,7 @@ export default function ProjectCard({ item }: any) {
           </Paper>
         </Grid>
       </Grid>
-    </>
+    </Paper>
   );
 }
 

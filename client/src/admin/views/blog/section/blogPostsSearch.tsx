@@ -2,7 +2,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import { Box, InputAdornment, SvgIcon, TextField } from "@mui/material";
 export default function BlogPostsSearch() {
   return (
-    <Box sx={{ maxWidth: 500 }}>
+    <Box sx={{ maxWidth: { xs: 200, sm: 500 } }}>
       <TextField
         fullWidth
         InputProps={{

@@ -1,7 +1,7 @@
 import { Box, Container, Switch, Typography } from "@mui/material";
 import React, { useState } from "react";
 
-export default function PricingTop({ content }: any) {
+export default function PricingTop() {
   const [state, setState] = useState({
     checkbox: true,
   });
@@ -11,7 +11,7 @@ export default function PricingTop({ content }: any) {
   };
   return (
     <React.Fragment>
-      <Box mb={3}>
+      <Box mb={3} pt={20}>
         <Container maxWidth="sm">
           <Typography
             variant="h3"
@@ -20,16 +20,16 @@ export default function PricingTop({ content }: any) {
             gutterBottom={true}
           >
             <Typography variant="h3" component="span" color="primary">
-              {content["header-p1"]}
+              {"Choose the"}
             </Typography>
             <Typography variant="h3" sx={{ ml: 2 }} component="span">
-              {content["header-p2"]}
+              {"Web Design that fits your needs"}
             </Typography>
           </Typography>
 
           <Box sx={{ textAlign: "center", p: 1 }}>
             <Typography variant="subtitle1" component="span">
-              {content["option1"]}
+              {"Monthly"}
             </Typography>
             &nbsp;
             <Switch
@@ -40,7 +40,7 @@ export default function PricingTop({ content }: any) {
             />
             &nbsp;
             <Typography variant="subtitle1" component="span">
-              {content["option2"]}
+              {"Annual"}
             </Typography>
           </Box>
         </Container>

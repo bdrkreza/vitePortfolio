@@ -33,10 +33,7 @@ export default function PricingSection({ content }: any) {
             </Typography>
           </Typography>
         </Box>
-        {/* <CardHeader
-          sx={{ textAlign: "center" }}
-          title={content.name}
-        ></CardHeader> */}
+
         <Box sx={classes.title}>{content.title}</Box>
         <CardContent sx={classes.cardContent}>
           <Box width="210px">
@@ -60,7 +57,7 @@ export default function PricingSection({ content }: any) {
               {content.benefit4}
             </Paper>
           </Box>
-          <Button variant="outlined" sx={{ mt: 4 }}>
+          <Button variant="outlined" sx={{ mt: 4, color: "var(--color-text)" }}>
             Select plan
           </Button>
           <Box mt={2}>
@@ -84,9 +81,9 @@ const classes = {
     desc: {
       display: "flex",
       fontWeight: "bold",
-      color: "white",
+      color: "var(--color-text)",
       mt: 1,
-      background: "var(--default)",
+      background: "var(--color-section)",
       svg: {
         mr: 2,
         color: "var(--green)",
@@ -128,11 +125,14 @@ const classes = {
     mt: 6,
     width: "120px",
     background:
-      "linear-gradient(157deg, var(--default)-12%, var(--darker) 100%)",
+      "linear-gradient(157deg, var(--darker)-12%, var(--darker) 100%)",
     color: "var(--color-text)",
     padding: "10px",
     borderTopRightRadius: "13px",
     borderBottomRightRadius: "13px",
+    borderRight: 1,
+    borderBottom: 1,
+    borderColor: "var(--default)",
     fontSize: "20px",
     fontWeight: "bold",
     textAlign: "center",
