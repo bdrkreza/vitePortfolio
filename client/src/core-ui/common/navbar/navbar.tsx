@@ -5,12 +5,14 @@ import Container from "@mui/material/Container";
 import Toolbar from "@mui/material/Toolbar";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import image from "../../../assets/icons/LogoMakr3.png";
+import image from "../../../assets/icons/brandLogo.webp";
+import Search from "../search/search";
 import SideDrawer from "./side_nav";
 import ToggleSwitch from "./toggleSwitch";
 
 const Navbar = () => {
-  const [scrolled, setScrolled] = useState(false);
+  const [scrolled, setScrolled] = useState(true);
+
   useEffect(() => {
     window.onscroll = function () {
       if (window.scrollY > 80) {
@@ -25,17 +27,19 @@ const Navbar = () => {
     <AppBar sx={scrolled ? classes.active : classes.header}>
       <Container maxWidth="xl">
         <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
-          <Link to="/">
-            {/* brand Logo */}
-            <CardMedia
-              component="img"
-              sx={{ width: "100%", height: "70px" }}
-              image={image}
-              alt="brandLogon"
-            />
-          </Link>
-
+          <Box>
+            <Link to="/">
+              {/* brand Logo */}
+              <CardMedia
+                component="img"
+                sx={{ width: "140px", height: "65px" }}
+                image={image}
+                alt="brandLogon"
+              />
+            </Link>
+          </Box>
           <Box sx={{ display: "flex", alignItems: "center" }}>
+            <Search />
             {/* mobile drawer */}
             <SideDrawer />
             <ToggleSwitch />
@@ -60,4 +64,5 @@ const classes = {
     boxShadow: "0 1px 2px rgba(0, 0, 0, 0.06)",
     transition: "all 0.4s ease",
   },
+  search: {},
 };

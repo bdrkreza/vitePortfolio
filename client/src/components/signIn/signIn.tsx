@@ -60,14 +60,15 @@ export default function SignInSection() {
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
           <TextField
             margin="normal"
-            sx={{ color: "var(--color-text)" }}
             required
             fullWidth
             id="email"
             label="Email Address"
             name="email"
             autoComplete="email"
+            placeholder="Email Address"
             autoFocus
+            sx={classes.input}
           />
           <TextField
             margin="normal"
@@ -75,9 +76,11 @@ export default function SignInSection() {
             fullWidth
             name="password"
             label="Password"
+            placeholder="password"
             type="password"
             id="password"
             autoComplete="current-password"
+            sx={classes.input}
           />
           <FormControlLabel
             sx={{ color: "var(--color-text)" }}
@@ -110,7 +113,25 @@ export default function SignInSection() {
           </Grid>
         </Box>
       </Box>
-      <Copyright sx={{ mt: 8, mb: 4 }} />
+      <Copyright sx={{ mt: 4, mb: 1, padding: 1 }} />
     </Container>
   );
 }
+
+export const classes = {
+  input: {
+    input: {
+      color: "#9e9e9e",
+      "&::placeholder": {
+        textOverflow: "ellipsis !important",
+        color: "#9e9e9e",
+      },
+    },
+    label: {
+      textOverflow: "ellipsis",
+      whiteSpace: "nowrap",
+      width: "100%",
+      color: "#a1887f",
+    },
+  },
+};

@@ -1,28 +1,39 @@
 import { Grid } from "@mui/material";
-import { useParams } from "react-router-dom";
-import { data } from "../../services/data/projectdata";
+import { IProjects } from "../../types/types";
+import ProjectAside from "./projectAside";
 import ProjectDetailsCard from "./projectDetailsCard";
 import ProjectHeader from "./projectHeader";
 import ProjectMain from "./projectMain";
-import ProjectSidebar from "./projectSidebar";
 
-export default function ProjectDetailsSection() {
-  let { projectId } = useParams();
-  const project = data.filter((id) => id._id === projectId);
+interface IProps {
+  project: IProjects | null;
+}
+
+export default function ProjectDetailsSection({ project }: IProps) {
   console.log(project);
   return (
-    <div>
-      <ProjectHeader screenshots={project[0]} />
-      <Grid container spacing={4} pt={5}>
-        {project[0].auth.map((post) => (
-          <ProjectDetailsCard key={post.title} post={post} />
-        ))}
+    <>
+      <Grid>
+        <ProjectHeader
+          screenshots={project?.screenshots}
+          liveLink={project?.liveLink}
+        />
+      </Grid>
+      <Grid spacing={4} pt={5}>
+        <ProjectDetailsCard
+          admin={project?.adminFeature}
+          user={project?.userFeature}
+        />
       </Grid>
 
-      <Grid container spacing={5} sx={{ mt: 3 }}>
-        <ProjectMain project={project[0]} />
-        <ProjectSidebar project={project[0].about} />
+      <Grid container spacing={4} sx={{ mt: 3 }}>
+        <Grid item xs={12} md={8}>
+          <ProjectMain image={project?.imagelevel} />
+        </Grid>
+        <Grid item xs={12} md={4}>
+          <ProjectAside about={project?.about} />
+        </Grid>
       </Grid>
-    </div>
+    </>
   );
 }

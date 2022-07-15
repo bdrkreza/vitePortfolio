@@ -30,19 +30,18 @@ const post = [
   },
 ];
 
-function ProjectHeader({ screenshots }: any) {
+interface IProps {
+  screenshots: string[] | undefined;
+  liveLink: string | undefined;
+}
+
+function ProjectHeader({ screenshots, liveLink }: IProps) {
+  console.log(screenshots);
   return (
     <Paper sx={{ background: "var(--darker)" }}>
-      <ProjectCarousel
-        post={screenshots.screenshots}
-        link={screenshots.liveLink}
-      />
+      <ProjectCarousel screenshots={screenshots} link={liveLink} />
       <Box sx={classes.rootBox}>
-        <a
-          href={screenshots.liveLink}
-          target="_blank"
-          style={{ textDecoration: "none" }}
-        >
+        <a href={liveLink} target="_blank" style={{ textDecoration: "none" }}>
           <Button variant="outlined" sx={{ mb: 2 }}>
             <Button sx={classes.button}>
               Live Preview

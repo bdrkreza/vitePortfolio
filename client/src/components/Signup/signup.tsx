@@ -12,6 +12,7 @@ import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import * as React from "react";
 import { Link } from "react-router-dom";
+import { classes } from "../signIn/signIn";
 
 function Copyright(props: any) {
   return (
@@ -76,11 +77,13 @@ export default function SignUpSection() {
                 <TextField
                   autoComplete="given-name"
                   name="username"
+                  placeholder="Enter your name"
                   required
                   fullWidth
                   id="firstName"
-                  label="User Name"
+                  label="Enter your Name"
                   autoFocus
+                  sx={classes.input}
                 />
               </Grid>
 
@@ -89,9 +92,11 @@ export default function SignUpSection() {
                   required
                   fullWidth
                   id="email"
+                  placeholder="Enter your Email"
                   label="Email Address"
                   name="email"
                   autoComplete="email"
+                  sx={classes.input}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -99,10 +104,12 @@ export default function SignUpSection() {
                   required
                   fullWidth
                   name="password"
+                  placeholder="Enter your password"
                   label="Password"
                   type="password"
                   id="password"
                   autoComplete="new-password"
+                  sx={classes.input}
                 />
               </Grid>
               <Grid item xs={12}>
