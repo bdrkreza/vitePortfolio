@@ -4,10 +4,9 @@ import Tab from "@mui/material/Tab";
 import Tabs from "@mui/material/Tabs";
 import * as React from "react";
 
-export default function TabsItems() {
-  const [value, setValue] = React.useState(0);
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    setValue(newValue);
+export default function TabsItems({ setCategory, category }: any) {
+  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
+    setCategory(newValue);
   };
 
   return (
@@ -17,17 +16,44 @@ export default function TabsItems() {
           onChange={handleChange}
           indicatorColor="secondary"
           textColor="primary"
-          value={value}
+          value={category}
           aria-label="Tabs where selection follows focus"
           selectionFollowsFocus
           centered
           sx={{ color: "var(--color-text)" }}
         >
-          <Tab label="all" sx={{ color: "var(--color-text)" }} />
-          <Tab label="html/css" sx={{ color: "var(--color-text)" }} />
-          <Tab label="react" sx={{ color: "var(--color-text)" }} />
+          {cate.map((ctg) => (
+            <Tab
+              label={ctg.label}
+              value={ctg.category}
+              sx={{ color: "var(--color-text)" }}
+            />
+          ))}
         </Tabs>
       </AppBar>
     </Box>
   );
 }
+
+const cate = [
+  {
+    id: 1,
+    category: "",
+    label: "All",
+  },
+  {
+    id: 2,
+    category: "html",
+    label: "html/css",
+  },
+  {
+    id: 3,
+    category: "reactjs",
+    label: "react app",
+  },
+  {
+    id: 4,
+    category: "nodejs",
+    label: "node js",
+  },
+];

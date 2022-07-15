@@ -1,7 +1,11 @@
-import { Grid, Typography } from "@mui/material";
-export default function ProjectMain({ project }: any) {
+import { Box, Typography } from "@mui/material";
+interface IProps {
+  image: string | undefined;
+}
+
+export default function ProjectMain({ image }: IProps) {
   return (
-    <Grid item xs={12} md={8}>
+    <Box sx={{ borderTop: 2 }}>
       <Typography
         variant="h6"
         sx={{ color: "var(--color-text)", fontSize: 30 }}
@@ -10,7 +14,7 @@ export default function ProjectMain({ project }: any) {
         From the firehose
       </Typography>
       <hr />
-      <img src={project.imageLevel} style={{ width: "100%" }} alt="" />
-    </Grid>
+      <img src={image} style={{ width: "100%" }} alt="" />
+    </Box>
   );
 }

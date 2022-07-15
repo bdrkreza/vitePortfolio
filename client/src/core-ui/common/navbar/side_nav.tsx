@@ -1,4 +1,4 @@
-import { Close } from "@mui/icons-material";
+import { NavigateNext } from "@mui/icons-material";
 import MenuIcon from "@mui/icons-material/Menu";
 import {
   Avatar,
@@ -88,6 +88,7 @@ export default function SideDrawer() {
           color="inherit"
           aria-label="open drawer"
           onClick={toggleDrawer("right", true)}
+          onKeyDown={toggleDrawer("right", false)}
         >
           <MenuIcon />
         </IconButton>
@@ -107,12 +108,19 @@ export default function SideDrawer() {
             anchor="right"
             open={state.right}
             onClose={toggleDrawer("right", false)}
+            onKeyDown={toggleDrawer("right", false)}
           >
             <Avatar
-              sx={{ background: "black", cursor: "pointer" }}
+              sx={{
+                background: "black",
+                cursor: "pointer",
+                position: "fixed",
+                zIndex: 100,
+              }}
               onClick={toggleDrawer("right", false)}
+              onKeyDown={toggleDrawer("right", false)}
             >
-              <Close />
+              <NavigateNext />
             </Avatar>
             {sideList("right")}
           </Drawer>

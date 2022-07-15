@@ -1,0 +1,18 @@
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 300px;
+  z-index: 100;
+  box-shadow: 21px 2px 48px -1px rgb(235, 230, 230);
+}
+
+.inner_nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: aquamarine;
+}

@@ -12,9 +12,11 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";
 // import required modules
-
-export default function ProjectCarousel({ post, link }: any) {
-  console.log(post);
+interface IProps {
+  screenshots: string[] | undefined;
+  link: string | undefined;
+}
+export default function ProjectCarousel({ screenshots, link }: IProps) {
   return (
     <>
       <Swiper
@@ -30,7 +32,7 @@ export default function ProjectCarousel({ post, link }: any) {
         modules={[Mousewheel, Autoplay]}
         className="mySwiper"
       >
-        {post.map((item: any, index: any) => (
+        {screenshots?.map((item: any, index: any) => (
           <SwiperSlide key={index}>
             <Paper sx={classes.paper}>
               <img src={item} alt="" />
@@ -50,7 +52,7 @@ export default function ProjectCarousel({ post, link }: any) {
                       color="inherit"
                       gutterBottom
                     >
-                      {item.title}
+                      item title
                     </Typography>
                   </Box>
                 </Grid>

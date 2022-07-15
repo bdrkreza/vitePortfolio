@@ -13,7 +13,6 @@ import { HomeLayout } from "./core-ui";
 import {
   AboutUs,
   Contact,
-  Home,
   Page404,
   Pricing,
   Project,
@@ -22,6 +21,7 @@ import {
   SignIn,
   SignUp,
 } from "./pages";
+import Home from "./pages/home_2";
 
 export default function AppRoutes() {
   return (
@@ -35,8 +35,8 @@ export default function AppRoutes() {
           <Route path="pricing" element={<Pricing />} />
           <Route path="about" element={<AboutUs />} />
           <Route path="contact" element={<Contact />} />
-          <Route path="signin" element={<SignIn />} />
-          <Route path="signup" element={<SignUp />} />
+          <Route path="login" element={<SignIn />} />
+          <Route path="register" element={<SignUp />} />
           <Route path="*" element={<Page404 />} />
         </Route>
         <Route path="dashboard" element={<DashboardLayout />}>

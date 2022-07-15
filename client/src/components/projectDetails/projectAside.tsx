@@ -1,9 +1,11 @@
-import { Box, Button, Divider, Grid, Paper, Typography } from "@mui/material";
-
-export default function ProjectSidebar({ project }: any) {
-  console.log(project);
+import { Box, Button, Divider, Paper, Typography } from "@mui/material";
+import { TAbout } from "../../types/types";
+interface IProps {
+  about: TAbout | undefined;
+}
+export default function ProjectAside({ about }: IProps) {
   return (
-    <Grid item xs={12} md={4}>
+    <>
       <Paper
         elevation={0}
         sx={{
@@ -22,7 +24,7 @@ export default function ProjectSidebar({ project }: any) {
           }}
           gutterBottom
         >
-          {project.name}
+          about
           <Divider />
         </Typography>
         <Typography
@@ -33,7 +35,7 @@ export default function ProjectSidebar({ project }: any) {
             fontFamily: "monospace",
           }}
         >
-          {project.title}
+          {about?.title}
         </Typography>
 
         <Box sx={{ mt: 1 }}>
@@ -47,7 +49,7 @@ export default function ProjectSidebar({ project }: any) {
             Use Technology
           </Typography>
           <Divider />
-          {project.tools.map((tool: any) => (
+          {about?.tools.map((tool: string) => (
             <Button sx={{ mt: 2, ml: 1 }} variant="outlined">
               {tool}
             </Button>
@@ -61,6 +63,6 @@ export default function ProjectSidebar({ project }: any) {
       >
         {"archive"}
       </Typography>
-    </Grid>
+    </>
   );
 }

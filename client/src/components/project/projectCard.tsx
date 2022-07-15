@@ -17,6 +17,7 @@ import { Link } from "react-router-dom";
 
 export default function ProjectCard({ item }: any) {
   const classes = useStyles();
+  const { _id, title, image, author, tags, date, rating } = item;
   return (
     <Paper sx={{ borderBottom: 1, borderColor: "var(--color-title)" }}>
       <Grid container className={classes.gird}>
@@ -29,15 +30,15 @@ export default function ProjectCard({ item }: any) {
                   color: "lightblue",
                 }}
               >
-                {item.title}
+                {title}
               </Typography>
             }
             followCursor
             placement="right-end"
           >
-            <Link to={`/project/${item._id}`}>
+            <Link to={`/project/${_id}`}>
               <Paper className={classes.paper1}>
-                <img className={classes.image} src={item.image} alt="" />
+                <img className={classes.image} src={image} alt="" />
               </Paper>
             </Link>
           </Tooltip>
@@ -52,21 +53,21 @@ export default function ProjectCard({ item }: any) {
                   color: "lightblue",
                 }}
               >
-                {item.title}
+                {title}
               </Typography>
             }
             followCursor
             placement="right-end"
           >
-            <Link to={`/project/${item._id}`} className={classes.link}>
+            <Link to={`/project/${_id}`} className={classes.link}>
               <Paper className={classes.paper2}>
                 <List className={classes.title}>
-                  <h1>{item.title}</h1>
-                  <Typography variant="body2">{item.author}</Typography>
+                  <h1>{title}</h1>
+                  <Typography variant="body2">{author}</Typography>
                 </List>
 
                 <ul className={classes.list}>
-                  {item.tags.map((tags: any) => (
+                  {tags.map((tags: any) => (
                     <li>{tags}</li>
                   ))}
                 </ul>
@@ -95,7 +96,7 @@ export default function ProjectCard({ item }: any) {
             <Box>
               <Rating
                 name="text-feedback"
-                value={item.rating}
+                value={rating}
                 readOnly
                 precision={0.5}
                 emptyIcon={
@@ -104,7 +105,7 @@ export default function ProjectCard({ item }: any) {
               />
             </Box>
             <Typography className={classes.date}>
-              last updated {item.date}
+              last updated {date}
             </Typography>
             <Button sx={{ mt: 2, mb: 2 }} variant="outlined">
               Live Preview
