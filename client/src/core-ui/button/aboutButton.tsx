@@ -3,7 +3,7 @@ import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
 import { Box, Button } from "@mui/material";
 type Props = {};
 
-export default function ButtonHeader({}: Props) {
+export default function AboutButton({}: Props) {
   return (
     <div>
       <Box sx={{ paddingTop: "20px" }}>

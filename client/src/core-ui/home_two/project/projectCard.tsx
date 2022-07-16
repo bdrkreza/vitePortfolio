@@ -1,5 +1,5 @@
 import { Box, Card, CardActions, CardContent, Typography } from "@mui/material";
-import ProjectBtn from "./projectBtn";
+import ProjectBtn from "../../button/projectBtn";
 
 export default function ProjectCard({ data }: any) {
   return (

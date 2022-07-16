@@ -43,7 +43,7 @@ export default function Project({}: Props) {
         columns={{ xs: 4, sm: 8, md: 12 }}
         pt={5}
       >
-        {data.map((item, index) => (
+        {data.reverse().map((item, index) => (
           <Grid item xs={2} sm={6} md={6} key={index}>
             <ProjectCard data={item} />
           </Grid>
@@ -53,7 +53,7 @@ export default function Project({}: Props) {
   );
 }
 
-const data = [
+export const data = [
   {
     title: "Elevato",
     description:

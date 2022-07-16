@@ -1,7 +1,7 @@
 import { Container, styled, Typography } from "@mui/material";
 import { motion } from "framer-motion";
 import url from "../../../assets/icons/brandLogo.webp";
-import ButtonHeader from "./button";
+import ButtonHeader from "../../button/aboutButton";
 import HeroCard from "./heroCard";
 import MediaLink from "./mediaLink";
 type Props = {};

@@ -1,0 +1,94 @@
+:root {
+  --primary: linear-gradient(90deg, #3474fc 0%, #f97eff 100%);
+}
+
+$color-white: #fff;
+$brand-color-g: #348e80;
+$brand-color: #3474fc;
+$primary: linear-gradient(
+  90deg,
+  rgba(24, 238, 255, 1) 0%,
+  rgba(48, 223, 255, 1) 100%
+);
+
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == "xs" {
+    @media screen and (max-width: 767px) {
+      @content;
+    }
+  } @else if $breakpoint == "sm" {
+    @media (min-width: 768px) and (max-width: 991px) {
+      @content;
+    }
+  } @else if $breakpoint == "md" {
+    @media (min-width: 992px) and (max-width: 1199px) {
+      @content;
+    }
+  } @else if $breakpoint == "lg" {
+    @media screen and (min-width: 1200px) {
+      @content;
+    }
+  }
+}
+
+.cart {
+  position: relative;
+
+  ol {
+    @include respond-to(xs) {
+      &.ps-timeline {
+        flex-direction: column;
+        margin-top: 40px !important;
+        border-left: 2px solid;
+        border-image-slice: 1;
+        border-width: 2px;
+        border-image-source: linear-gradient(90deg, #3474fc 0%, #f97eff 100%);
+        padding-left: 0 !important;
+        border-top: 0 !important;
+        margin-left: 25px !important;
+        li {
+          height: 150px;
+          width: inherit !important;
+          span {
+            left: 0px !important;
+            margin-top: 16%;
+          }
+        }
+      }
+    }
+
+    &.ps-timeline {
+      display: flex;
+      gap: 10px;
+      margin-top: 90px;
+      padding: 0;
+      border-top: 2px solid;
+      border-image-slice: 1;
+      border-width: 2px;
+      border-image-source: linear-gradient(90deg, #3474fc 0%, #f97eff 100%);
+      list-style: none;
+
+      li {
+        width: 25%;
+        padding-top: 30px;
+        position: relative;
+
+        span {
+          width: 40px;
+          height: 40px;
+          margin-left: -25px;
+          background: $color-white;
+          // border: 1px solid var(--gray);
+          border-radius: 50%;
+          text-align: center;
+          line-height: 50px -10;
+          font-size: 2em;
+          font-style: normal;
+          position: absolute;
+          top: -22px;
+          left: 50%;
+        }
+      }
+    }
+  }
+}

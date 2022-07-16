@@ -1,5 +1,4 @@
-import EastIcon from "@mui/icons-material/East";
-import { Button, CardMedia, Grid } from "@mui/material";
+import { CardMedia, Grid } from "@mui/material";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -8,6 +7,7 @@ import { Link } from "react-router-dom";
 import book from "../../../assets/images/home/book.png";
 import dev from "../../../assets/images/home/dev.png";
 import tem from "../../../assets/images/home/tem.png";
+import HeroButton from "../../button/heroButton";
 
 export default function HeroCard() {
   return (
@@ -17,9 +17,12 @@ export default function HeroCard() {
         spacing={{ xs: 2, md: 3 }}
         columns={{ xs: 4, sm: 8, md: 12 }}
       >
-        {data.map(({ title, description, image }, index) => (
+        {data.map(({ title, description, image, link }, index) => (
           <Grid item xs={2} sm={4} md={4} key={index}>
-            <Link to="/" style={{ textDecoration: "none", cursor: "pointer" }}>
+            <Link
+              to={link}
+              style={{ textDecoration: "none", cursor: "pointer" }}
+            >
               <Card
                 variant="outlined"
                 sx={{
@@ -68,9 +71,9 @@ export default function HeroCard() {
                     >
                       {description}
                     </Typography>
-                    <Button size="small" sx={{ mt: 5 }} endIcon={<EastIcon />}>
-                      Learn More
-                    </Button>
+                    <Link to={link} style={{ textDecoration: "none" }}>
+                      <HeroButton />
+                    </Link>
                   </Box>
                   <CardMedia
                     component="img"
@@ -93,15 +96,18 @@ const data = [
     title: "Template Design",
     description: "Top notch, tailored design for your product",
     image: tem,
+    link: "/project",
   },
   {
     title: "App Development",
     description: "Future proof JamStack Development",
     image: dev,
+    link: "/development",
   },
   {
     title: "Education",
     description: "Top notch, tailored design for your product",
     image: book,
+    link: "/education",
   },
 ];

@@ -21,6 +21,7 @@ import {
   SignIn,
   SignUp,
 } from "./pages";
+import Development from "./pages/development";
 import Home from "./pages/home_2";
 
 export default function AppRoutes() {
@@ -35,6 +36,7 @@ export default function AppRoutes() {
           <Route path="pricing" element={<Pricing />} />
           <Route path="about" element={<AboutUs />} />
           <Route path="contact" element={<Contact />} />
+          <Route path="development" element={<Development />} />
           <Route path="login" element={<SignIn />} />
           <Route path="register" element={<SignUp />} />
           <Route path="*" element={<Page404 />} />

@@ -4,6 +4,11 @@ import MySkill from "./aboutUs/skill";
 import Work from "./aboutUs/work";
 import ContactSection from "./contact/contact";
 import GoogleMap from "./contact/googleMap";
+import DevHeader from "./development/dev_header_section";
+import DevProblemSolve from "./development/dev_problem_solve";
+import DevProcess from "./development/dev_process";
+import DevQuality from "./development/dev_quality";
+import DevRecentProducts from "./development/dev_recent_products";
 import PricingSection from "./pricing/pricing";
 import PricingHeader from "./pricing/pricingHeader";
 import PricingTop from "./pricing/pricingTop";
@@ -30,4 +35,9 @@ export {
   MySkill,
   SignInSection,
   SignUpSection,
+  DevHeader,
+  DevProcess,
+  DevProblemSolve,
+  DevQuality,
+  DevRecentProducts,
 };
