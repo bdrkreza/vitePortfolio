@@ -1,3 +1,4 @@
+import { Testimonials } from "../../components";
 import {
   FieldOfExperience,
   HeroSection,
@@ -14,6 +15,7 @@ export default function Home({}: Props) {
       <FieldOfExperience />
       <Project />
       <Technology />
+      <Testimonials />
     </div>
   );
 }

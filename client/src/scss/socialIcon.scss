@@ -70,3 +70,31 @@
     }
   }
 }
+
+@media screen and (max-width: 768px) {
+  .social-icon {
+    flex-direction: row;
+    gap: 5px;
+    transform: translate(0%, -180%);
+    li {
+      a {
+        display: block;
+        width: 100px;
+        height: 50px;
+        padding-left: 0px;
+        span {
+          top: 0px;
+          font-size: 15px;
+          letter-spacing: 1px;
+          transition: 0.5s;
+        }
+      }
+      svg {
+        font-size: 25px;
+        line-height: 40px;
+        transition: 0.5s;
+        padding-right: 14px;
+      }
+    }
+  }
+}

@@ -12,13 +12,20 @@ import HeroButton from "../../button/heroButton";
 export default function HeroCard() {
   return (
     <>
-      <Grid
-        container
-        spacing={{ xs: 2, md: 3 }}
-        columns={{ xs: 4, sm: 8, md: 12 }}
-      >
+      <Grid container spacing={{ xs: 8, md: 10 }}>
         {data.map(({ title, description, image, link }, index) => (
-          <Grid item xs={2} sm={4} md={4} key={index}>
+          <Grid
+            item
+            xs={12}
+            sm={6}
+            md={4}
+            key={index}
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
             <Link
               to={link}
               style={{ textDecoration: "none", cursor: "pointer" }}
@@ -30,7 +37,7 @@ export default function HeroCard() {
                   display: "flex",
                   boxShadow: "-3px 1px 2px rgba(0, 0, 0, 0.5)",
                   width: "100%",
-                  maxWidth: "340px",
+                  maxWidth: "364px",
                   height: "245px",
                   padding: "0 4px 0 35px",
                   transition: "256ms top",
@@ -78,6 +85,7 @@ export default function HeroCard() {
                   <CardMedia
                     component="img"
                     height="100%"
+                    width="100%"
                     image={image}
                     alt="green iguana"
                   />

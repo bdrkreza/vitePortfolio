@@ -23,8 +23,8 @@ export default function ProjectSection() {
   }, [category]);
 
   return (
-    <div>
-      <div>
+    <>
+      <div style={{ marginTop: "70px" }}>
         <h1 className="section_heading" data-outline="project">
           Project
           <hr style={{ border: "solid 2px var(--danger)", width: "250px" }} />
@@ -38,6 +38,6 @@ export default function ProjectSection() {
           </Grid>
         ))}
       </Grid>
-    </div>
+    </>
   );
 }

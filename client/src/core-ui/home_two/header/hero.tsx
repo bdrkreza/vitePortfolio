@@ -15,6 +15,10 @@ const ImageSrc = styled("span")({
   backgroundRepeat: "no-repeat",
   backgroundSize: "contain",
   backgroundPosition: "center 40%",
+  "@media screen and (max-width: 768px)": {
+    backgroundSize: "120%",
+    backgroundPosition: "center 40%",
+  },
 });
 
 export default function HeroSection({}: Props) {
@@ -29,6 +33,9 @@ export default function HeroSection({}: Props) {
           alignItems: "center",
           justifyContent: "space-between",
           flexWrap: "wrap",
+          "@media screen and (max-width: 768px)": {
+            marginLeft: "30px",
+          },
         }}
       >
         <ImageSrc style={{ backgroundImage: `url(${url})` }} />

@@ -4,6 +4,7 @@ import MySkill from "./aboutUs/skill";
 import Work from "./aboutUs/work";
 import ContactSection from "./contact/contact";
 import GoogleMap from "./contact/googleMap";
+import DevBrandProduct from "./development/dev_brand_product";
 import DevHeader from "./development/dev_header_section";
 import DevProblemSolve from "./development/dev_problem_solve";
 import DevProcess from "./development/dev_process";
@@ -18,6 +19,7 @@ import ServiceCard from "./service/serviceCard";
 import ServiceHeader from "./service/serviceHeader";
 import SignInSection from "./signIn/signIn";
 import SignUpSection from "./Signup/signup";
+import Testimonials from "./Testimonials/testimonials";
 
 export {
   ProjectSection,
@@ -40,4 +42,6 @@ export {
   DevProblemSolve,
   DevQuality,
   DevRecentProducts,
+  DevBrandProduct,
+  Testimonials,
 };

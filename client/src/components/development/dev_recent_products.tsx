@@ -27,7 +27,18 @@ export default function DevRecentProducts({}: Props) {
           pt={8}
         >
           {data.slice(-2).map((item, index) => (
-            <Grid item xs={4} sm={4} md={6} key={index}>
+            <Grid
+              item
+              xs={4}
+              sm={8}
+              md={6}
+              key={index}
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
               <ProjectCard data={item} />
             </Grid>
           ))}

@@ -44,7 +44,18 @@ export default function Project({}: Props) {
         pt={5}
       >
         {data.reverse().map((item, index) => (
-          <Grid item xs={2} sm={6} md={6} key={index}>
+          <Grid
+            item
+            xs={4}
+            sm={8}
+            md={6}
+            key={index}
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
             <ProjectCard data={item} />
           </Grid>
         ))}

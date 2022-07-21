@@ -6,7 +6,14 @@ type Props = {};
 export default function AboutButton({}: Props) {
   return (
     <div>
-      <Box sx={{ paddingTop: "20px" }}>
+      <Box
+        sx={{
+          paddingTop: "20px",
+          "@media screen and (max-width: 768px)": {
+            pt: 5,
+          },
+        }}
+      >
         <Button sx={classes.btn} endIcon={<EastIcon />} variant="outlined">
           About Me
         </Button>

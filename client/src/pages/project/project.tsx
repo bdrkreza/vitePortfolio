@@ -1,9 +1,10 @@
 import React from "react";
-import { ProjectSection } from "../../components";
+import { DevHeader, ProjectSection } from "../../components";
 
 export default function Project() {
   return (
     <React.Fragment>
+      <DevHeader />
       <ProjectSection />
     </React.Fragment>
   );

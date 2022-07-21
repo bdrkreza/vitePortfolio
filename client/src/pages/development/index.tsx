@@ -1,5 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import {
+  DevBrandProduct,
   DevHeader,
   DevProblemSolve,
   DevProcess,
@@ -14,10 +15,12 @@ export default function Development({}: Props) {
   return (
     <div>
       <DevHeader />
+      <DevBrandProduct />
       <DevQuality />
       <DevProblemSolve />
       <Technology />
       <DevProcess />
+      <DevRecentProducts />
       <Box sx={{ mt: 10 }}>
         <Typography
           sx={{
@@ -32,7 +35,6 @@ export default function Development({}: Props) {
         </Typography>
         <HeroCard />
       </Box>
-      <DevRecentProducts />
     </div>
   );
 }
