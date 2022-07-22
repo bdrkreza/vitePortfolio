@@ -71,6 +71,7 @@ export default function ToggleSwitch() {
     setDark();
   }
   const toggleTheme = (e: any) => {
+    localStorage.setItem("light", e.target.checked);
     if (e.target.checked) {
       setDark();
     } else {

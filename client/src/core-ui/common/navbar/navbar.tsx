@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import image from "../../../assets/icons/brandLogo.webp";
 import Search from "../search/search";
-import SideDrawer from "./side_nav";
+import SideBar from "../sideMenu/side_menu";
 import ToggleSwitch from "./toggleSwitch";
 
 const Navbar = () => {
@@ -41,7 +41,7 @@ const Navbar = () => {
           <Box sx={{ display: "flex", alignItems: "center" }}>
             <Search />
             {/* mobile drawer */}
-            <SideDrawer />
+            <SideBar />
             <ToggleSwitch />
           </Box>
         </Toolbar>

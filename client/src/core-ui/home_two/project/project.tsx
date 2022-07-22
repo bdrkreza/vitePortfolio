@@ -19,8 +19,8 @@ type Props = {};
 
 export default function Project({}: Props) {
   return (
-    <div>
-      <div style={{ textAlign: "center" }}>
+    <>
+      <div style={{ textAlign: "center", marginTop: "100px" }}>
         <h1 className="section_heading" data-outline="Projects showcase">
           Projects showcase
           <Divider />
@@ -60,7 +60,7 @@ export default function Project({}: Props) {
           </Grid>
         ))}
       </Grid>
-    </div>
+    </>
   );
 }
 

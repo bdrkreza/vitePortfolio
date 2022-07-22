@@ -3,32 +3,34 @@ export const data = [
     _id: "01",
     image:
       "https://res.cloudinary.com/rkreza/image/upload/v1647797890/project/image_pm44hd.png",
-    title: "modus - e-commerce &  web app",
+    bg_image: "",
+    name: "modus - e-commerce &  web app",
+    title: "Elevato",
     author: "by rkreza - modus Theme",
     liveLink: "https://modus-tailwind.web.app/",
     getHubLink: "https://github.com/bdrkreza/modus-mern-full-complete-website",
-    auth: [
-      {
-        title: "User Featured",
-        image:
-          "https://res.cloudinary.com/rkreza/image/upload/v1647797889/project/screen_2_pohitn.png",
-        tags: [
-          "user can visit profile",
-          "user permissions with Complete order list",
-          "User can profile edit and add",
-        ],
-      },
-      {
-        title: "Admin feature",
-        image:
-          "https://res.cloudinary.com/rkreza/image/upload/v1647797889/project/screen_1_oi5v2c.png",
-        tags: [
-          "admin List with add/Edit Modals",
-          "admin permissions with Complete CRUD",
-          "admin Roles with complete CRUD",
-        ],
-      },
-    ],
+    adminFeature: {
+      title: "Admin feature",
+      image:
+        "https://res.cloudinary.com/rkreza/image/upload/v1647801697/project/redsecurity_9_alybeq.png",
+      tags: [
+        "admin List with add/Edit Modals",
+        "admin permissions with Complete CRUD",
+        "admin Roles with complete CRUD",
+        "full width or sidebar single pages",
+      ],
+    },
+    userFeature: {
+      title: "User Featured",
+      image:
+        "https://res.cloudinary.com/rkreza/image/upload/v1647801696/project/redsecurity_6_rwbn27.png",
+      tags: [
+        "user can visit profile",
+        "user permissions with Complete order list",
+        "User can profile edit and add",
+        "user can review service provider",
+      ],
+    },
     screenshots: [
       "https://res.cloudinary.com/rkreza/image/upload/v1647797894/project/screen_uxrj3l.png",
       "https://res.cloudinary.com/rkreza/image/upload/v1647797889/project/screen_4_e6blbd.png",

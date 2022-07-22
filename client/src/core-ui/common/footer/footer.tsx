@@ -1,4 +1,4 @@
-import { Box, Card, Container } from "@mui/material";
+import { Box, Container } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
@@ -17,14 +17,13 @@ export default function Footer() {
   return (
     <Box
       sx={{
-        backgroundColor: "var(--darker)",
         marginTop: "40px",
         borderTop: 3,
         borderColor: "var(--cyan)",
       }}
     >
       <Container>
-        <Card sx={{ flexGrow: 1, backgroundColor: "var(--darker)" }}>
+        <Box sx={{ flexGrow: 1, backgroundColor: "transparent" }}>
           <Grid container spacing={3}>
             <Grid item xs={12} sm={12} md={6}>
               <Item sx={classes.aboutBox}>
@@ -42,7 +41,7 @@ export default function Footer() {
               </Item>
             </Grid>
           </Grid>
-        </Card>
+        </Box>
       </Container>
     </Box>
   );
@@ -50,7 +49,7 @@ export default function Footer() {
 
 const classes = {
   aboutBox: {
-    backgroundColor: "var(--darker)",
+    backgroundColor: "transparent",
     minHeight: "230px",
     color: "var(--color-text)",
     h1: {
@@ -64,7 +63,7 @@ const classes = {
     },
   },
   contactBox: {
-    backgroundColor: "var(--darker)",
+    backgroundColor: "transparent",
     color: "var(--color-text)",
     minHeight: "230px",
     h1: {
@@ -88,7 +87,7 @@ const classes = {
     },
   },
   socialBox: {
-    backgroundColor: "var(--darker)",
+    backgroundColor: "transparent",
     color: "var(--color-text)",
     minHeight: "215px",
 

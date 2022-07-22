@@ -27,7 +27,6 @@ export default function HeroSection({}: Props) {
       <Container
         sx={{
           color: "black",
-          backgroundColor: "var(--background)",
           height: "730px",
           display: "flex",
           alignItems: "center",
