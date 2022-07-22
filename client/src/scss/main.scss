@@ -32,3 +32,18 @@ body {
   background: linear-gradient(transparent, var(--success));
   cursor: pointer;
 }
+
+.file-Upload {
+  position: relative;
+  overflow: hidden;
+  input {
+    position: absolute;
+    cursor: pointer;
+    font-size: 50px;
+    height: 100px;
+    width: 100px;
+    opacity: 0;
+    right: 0;
+    top: 0;
+  }
+}

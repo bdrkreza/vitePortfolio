@@ -1,14 +1,20 @@
 import { Autocomplete, Chip, TextField } from "@mui/material";
 
-export default function ProjectTools() {
+export default function ProjectTools({ onChange }: any) {
   return (
     <div>
-      <TextField id="standard-basic" label="Standard" variant="standard" />
+      <TextField
+        sx={{ mb: 2 }}
+        fullWidth
+        id="standard-basic"
+        label="about title"
+        variant="standard"
+      />
       <Autocomplete
+        onChange={onChange}
         multiple
         id="tags-filled"
         options={top100Films.map((option) => option.title)}
-        defaultValue={[top100Films[13].title]}
         freeSolo
         renderTags={(value: readonly string[], getTagProps) =>
           value.map((option: string, index: number) => (
@@ -21,10 +27,10 @@ export default function ProjectTools() {
         }
         renderInput={(params) => (
           <TextField
+            name="tools"
             {...params}
             variant="filled"
-            label="freeSolo"
-            placeholder="Favorites"
+            label="about tools"
           />
         )}
       />

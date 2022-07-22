@@ -8,15 +8,13 @@ import {
   TextField,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import React from "react";
 import image from "../../../assets/01 (1).jpg";
 const Input = styled("input")({
   display: "none",
 });
 
-export default function AddInputTags() {
-  const [tags, SetTags] = React.useState(["plase", "do not"]);
-
+export default function AddInputTags({ SetTags, tags }: any) {
+  console.log(tags);
   const addTag = (e: any) => {
     if (e.key === "Enter") {
       if (e.target.value.length > 0) {
@@ -57,8 +55,7 @@ export default function AddInputTags() {
         multiple
         id="tags-filled"
         onChange={addTag}
-        options={tags.map((option) => option)}
-        defaultValue={tags}
+        options={tags.map((option: any) => option)}
         freeSolo
         renderTags={(value: readonly string[], getTagProps) =>
           value.map((option: string, index: number) => (
@@ -73,7 +70,7 @@ export default function AddInputTags() {
           <TextField
             {...params}
             variant="filled"
-            label="add tags"
+            label="project tags"
             placeholder="Favorites"
           />
         )}

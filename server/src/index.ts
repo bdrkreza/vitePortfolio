@@ -1,20 +1,46 @@
-import express from "express";
-import { graphqlHTTP } from "express-graphql";
-import userResolvers from "./resolvers/resolvers";
-import schema from "./schema/user.schema";
-const app = express();
+import { ApolloError, ApolloServer } from "apollo-server";
+import dotenv from "dotenv";
+import jwt from "jsonwebtoken";
+import connectDB from "./db";
+import resolvers from "./resolvers";
+import typeDefs from "./schema";
+dotenv.config();
 
-app.use(
-  "/graphql",
-  graphqlHTTP({
-    schema: schema,
-    rootValue: userResolvers,
-    graphiql: true,
-  })
-);
+//database connect
+connectDB();
 
-const PORT = 8000;
+const getUser = (token) => {
+  try {
+    if (token) {
+      return jwt.verify(token, process.env.JWT_SECRET);
+    }
+    return null;
+  } catch (error) {
+    throw new ApolloError("token error", error.message);
+  }
+};
 
-app.listen(PORT);
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  context: ({ req }) => {
+    // Get the user token from the headers.
+    const token = req.headers.authorization || "";
 
-console.log(`Running a GraphQL API server at http://localhost:${PORT}/graphql`);
+    // Try to retrieve a user with the token
+    const user = getUser(token);
+    // Add the user to the context
+
+    return user;
+  },
+  formatError: ({ message, extensions }) => {
+    return {
+      message,
+      extensions,
+    };
+  },
+});
+
+server.listen().then(({ url }) => {
+  console.log(`🚀  Server ready at ${url}`);
+});

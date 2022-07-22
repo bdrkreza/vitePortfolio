@@ -1,0 +1,30 @@
+
+npm install apollo-server graphql 
+npm install --save-dev typescript ts-node
+npm install @types/node --save-dev
+npm install --save-dev nodemon
+
+mkdir src
+cd src
+touch index.ts
+
+ "scripts": {
+    "start": "nodemon --exec ts-node src/index.ts"
+  },
+
+
+// tsconfig.json
+
+{
+  "compilerOptions": {
+    "target": "es5",
+    "esModuleInterop": true,
+    "module": "commonjs",
+    "lib": ["dom", "es6"],
+    "outDir": "dist",
+    "rootDir": "src",
+    "removeComments": true
+  },
+  "exclude": ["node_modules"],
+  "include": ["src/**/*.ts"]
+}
