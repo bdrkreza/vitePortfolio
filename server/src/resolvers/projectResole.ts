@@ -1,4 +1,5 @@
 import { ApolloError, AuthenticationError } from "apollo-server";
+import cloudinary from "../lib/cloudinary";
 import Projects from "../models/project.model";
 import Category from "../models/projectCategory.model";
 
@@ -150,10 +151,11 @@ const createProject = {
   name: "project",
   description: "create project and return project ",
   async resolve(_, { input }, { user }) {
+    console.log(input);
     try {
-      if (!user || !user.role.includes("admin")) {
-        return new AuthenticationError("you must be logged in");
-      }
+      // if (!user || !user.role.includes("admin")) {
+      //   return new AuthenticationError("you must be logged in");
+      // }
       if (!input) {
         return new ApolloError("File Contains No Data", "503");
       }
@@ -267,6 +269,23 @@ const filterProject = {
     }
   },
 };
+
+const deleteImage = {
+  name: "imageUrl",
+  description: "Delete image and return true",
+  async resolve(_, { id }, { user }) {
+    try {
+      if (id) {
+        await cloudinary.uploader.destroy(id);
+        return true;
+      } else {
+        return new ApolloError("You must provide by Id a project", "400");
+      }
+    } catch (error) {
+      return new ApolloError("Bad File Request. ...", "400", error);
+    }
+  },
+};
 const projectResolver = {
   Query: {
     filterProject,
@@ -284,6 +303,7 @@ const projectResolver = {
     updateProject,
     deleteProject,
     createCategory,
+    deleteImage,
   },
 };
 

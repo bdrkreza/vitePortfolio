@@ -3,7 +3,6 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
 import * as React from "react";
-import AddProjectInputs from "./add-project-form";
 
 const style = {
   position: "absolute" as "absolute",
@@ -14,7 +13,8 @@ const style = {
   bgcolor: "background.paper",
   border: "2px solid #000",
   boxShadow: 24,
-  p: 4,
+  mt: 10,
+  p: 5,
 };
 
 export default function AddProject() {
@@ -32,10 +32,9 @@ export default function AddProject() {
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
+        sx={{ overflowY: "auto" }}
       >
-        <Box sx={style}>
-          <AddProjectInputs />
-        </Box>
+        <Box sx={style}></Box>
       </Modal>
     </div>
   );

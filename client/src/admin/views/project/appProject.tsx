@@ -1,6 +1,8 @@
-import { Grid, Stack, Typography } from "@mui/material";
-import React from "react";
-import AddProject from "./section/addProject";
+import AddIcon from "@mui/icons-material/Add";
+import { Button, Grid, Stack, Typography } from "@mui/material";
+import { Fragment } from "react";
+import { Link } from "react-router-dom";
+
 import AppProjectCard from "./section/appProjectCard";
 import ProjectSearch from "./section/projectSearch";
 import ProjectSort from "./section/projectSort";
@@ -11,7 +13,7 @@ const SORT_OPTIONS = [
 ];
 export default function AppProject() {
   return (
-    <React.Fragment>
+    <Fragment>
       <Stack
         direction="row"
         alignItems="center"
@@ -21,7 +23,11 @@ export default function AppProject() {
         <Typography variant="h4" gutterBottom>
           Project
         </Typography>
-        <AddProject />
+        <Link style={{ textDecoration: "none" }} to="/dashboard/add-project">
+          <Button variant="contained" startIcon={<AddIcon />}>
+            New Project
+          </Button>
+        </Link>
       </Stack>
 
       <Stack
@@ -45,6 +51,6 @@ export default function AppProject() {
           </Grid>
         ))}
       </Grid>
-    </React.Fragment>
+    </Fragment>
   );
 }

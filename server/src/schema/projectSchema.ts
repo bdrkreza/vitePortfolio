@@ -7,6 +7,7 @@ type Query {
     singleProject(id:String):Project
     categories:[Category]
     category(category: String): Category
+
   }
 
 
@@ -15,24 +16,27 @@ type Query {
     updateProject(id: String, input: ProjectInput): Project
     deleteProject(id: String): Boolean
     createCategory(input: CategoryInput): Category
+    deleteImage(id:String): Boolean
   }
 
 type Project {
     _id: String
+    name: String
+    bg_image: String
     image: String
     title: String
     author: String
-    category:String
-    slug:String
-    liveLink: String
-    getHubLink: String
+    category: String
+    slug: String
+    live_link: String
+    git_code_link: String
     screenshots: [String]
-    imagelevel: String
+    image_level: String
     tags: [String]
     rating: Float!
     date: String
-    userFeature:Auth
-    adminFeature:Auth
+    user_feature: AuthFeature
+    admin_feature: AuthFeature
     about: About
   }
 
@@ -42,37 +46,39 @@ type Project {
   }
 
 
- type Auth {
-    title:String
+ type AuthFeature {
     image: String
     tags: [String]
 }
+
 input AboutInput {
     title:String!
     tools:[String]
   }
-input FeatureInput{
-    title: String
+input AuthFeatureInput{
     image: String
     tags: [String]
 }
 
 
 input ProjectInput {
-    image: String!
+    name:String!
     title: String!
-    author: String!
-    liveLink: String!
-    getHubLink: String!
+    image: String!
+    bg_image:String!
+    author: String
+    live_link: String!
+    git_code_link: String!
     screenshots: [String]
-    imagelevel: String!
+    image_level: String!
     tags: [String]!
     rating: Float
     category: String!
     slug: String!
-    date: String
-    adminFeature: FeatureInput
-    userFeature: FeatureInput
+    start_date: String
+    end_date: String
+    admin_feature: AuthFeatureInput
+    user_feature: AuthFeatureInput
     about: AboutInput
 }
 

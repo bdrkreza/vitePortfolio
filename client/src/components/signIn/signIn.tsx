@@ -1,3 +1,4 @@
+import { useMutation } from "@apollo/client";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
@@ -11,6 +12,7 @@ import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import * as React from "react";
 import { Link } from "react-router-dom";
+import { LOGIN_USER } from "../../services";
 
 function Copyright(props: any) {
   return (
@@ -23,9 +25,19 @@ function Copyright(props: any) {
 }
 
 export default function SignInSection() {
+  const [loginUser, { data, loading, error }] = useMutation(LOGIN_USER);
+  console.log(data);
+  if (loading) return "Submitting...";
+  if (error) return `Submission error! ${error.message}`;
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
+    loginUser({
+      variables: {
+        email: data.get("email"),
+        password: data.get("password"),
+      },
+    });
     console.log({
       email: data.get("email"),
       password: data.get("password"),

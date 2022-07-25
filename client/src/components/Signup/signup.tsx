@@ -1,3 +1,4 @@
+import { useMutation } from "@apollo/client";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
@@ -12,6 +13,7 @@ import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import * as React from "react";
 import { Link } from "react-router-dom";
+import { REGISTER_USER } from "../../services";
 import { classes } from "../signIn/signIn";
 
 function Copyright(props: any) {
@@ -31,12 +33,21 @@ function Copyright(props: any) {
 const theme = createTheme();
 
 export default function SignUpSection() {
+  const [registerUser, { data, loading, error }] = useMutation(REGISTER_USER);
+
+  if (loading) return "Submitting...";
+  if (error) return `Submission error! ${error.message}`;
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
+    registerUser({
+      variables: {
+        input: {
+          username: data.get("username"),
+          email: data.get("email"),
+          password: data.get("password"),
+        },
+      },
     });
   };
 

@@ -4,10 +4,8 @@ const userSchema = buildSchema(`
     input UserInput {
         username: String!
         email: String!
-        role:String!
+        role:String
         password:String!
-       
-
     }
 
     type User {

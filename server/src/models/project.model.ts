@@ -2,6 +2,10 @@ import { model, Schema } from "mongoose";
 
 const userSchema = new Schema(
   {
+    name: {
+      type: String,
+      required: true,
+    },
     title: {
       type: String,
       required: true,
@@ -10,7 +14,11 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    imagelevel: {
+    bg_image: {
+      type: String,
+      default: "image",
+    },
+    image_level: {
       type: String,
       default: "image",
     },
@@ -19,15 +27,19 @@ const userSchema = new Schema(
       type: String,
       default: "user",
     },
-    liveLink: {
+    live_link: {
       type: String,
       required: true,
     },
-    getHubLink: {
+    git_code_link: {
       type: String,
       required: true,
     },
-    date: {
+    start_date: {
+      type: String,
+      required: true,
+    },
+    end_date: {
       type: String,
       required: true,
     },
@@ -41,25 +53,17 @@ const userSchema = new Schema(
     },
     rating: {
       type: Number,
-      required: true,
+      default: 0,
     },
     tags: [String],
-    adminFeature: {
-      title: {
-        type: String,
-        required: true,
-      },
+    admin_feature: {
       image: {
         type: String,
         required: true,
       },
       tags: [String],
     },
-    userFeature: {
-      title: {
-        type: String,
-        required: true,
-      },
+    user_feature: {
       image: {
         type: String,
         required: true,

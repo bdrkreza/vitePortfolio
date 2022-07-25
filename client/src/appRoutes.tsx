@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import DashboardLayout from "./admin/adminLayout/dashboardLayout";
 import {
+  AddProject,
   AppBlog,
   AppCustomer,
   AppDashboard,
@@ -44,6 +45,7 @@ export default function AppRoutes() {
         <Route path="dashboard" element={<DashboardLayout />}>
           <Route index element={<AppDashboard />} />
           <Route path="app-project" element={<AppProject />} />
+          <Route path="add-project" element={<AddProject />} />
           <Route path="app-blog" element={<AppBlog />} />
           <Route path="app-customer" element={<AppCustomer />} />
           <Route path="app-profile" element={<AppProfile />} />

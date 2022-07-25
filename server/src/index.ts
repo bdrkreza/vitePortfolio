@@ -6,6 +6,8 @@ import resolvers from "./resolvers";
 import typeDefs from "./schema";
 dotenv.config();
 
+// all middleware array
+
 //database connect
 connectDB();
 
@@ -23,6 +25,10 @@ const getUser = (token) => {
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  cors: {
+    origin: "*", // <- allow request from all domains
+    credentials: true,
+  },
   context: ({ req }) => {
     // Get the user token from the headers.
     const token = req.headers.authorization || "";

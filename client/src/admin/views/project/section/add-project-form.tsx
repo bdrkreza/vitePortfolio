@@ -1,38 +1,100 @@
-import { Button } from "@mui/material";
+import { useMutation } from "@apollo/client";
+import SaveIcon from "@mui/icons-material/Save";
+import { LoadingButton } from "@mui/lab";
+import { Box } from "@mui/material";
 import Grid from "@mui/material/Grid";
-import { styled } from "@mui/material/styles";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
-import * as React from "react";
-import AddInputTags from "./addTags";
-import AdminInputTags from "./adminTags";
+import { useState } from "react";
+import { CREATE_PROJECT } from "../../../../services";
+import AdminFeature from "./adminFeature";
 import ImageLevel from "./imageLevel";
 import ImageCarousel from "./project-image-carousel";
 import ProjectTools from "./project-tools";
-import UserInputTags from "./userTags";
-const Input = styled("input")({
-  display: "none",
-});
-export default function AddressForm() {
-  const [formValue, setFormValue] = React.useState({});
-  const [tags, SetTags] = React.useState(["plase", "do not"]);
+import ProjectImage from "./projectImage";
+import ProjectTags from "./projectTags";
+import UserFeature from "./userFeature";
+
+interface IFormData {
+  name: string;
+  title: string;
+  live_link: string;
+  git_code_link: string;
+  start_date: string;
+  end_date: string;
+  category: string;
+  about_title: string;
+}
+export type IFile = {
+  secure_url: string;
+  public_id: string;
+};
+
+export default function AddProjectInputs() {
+  const [formData, setFormData] = useState<IFormData>({} as IFormData);
+  const [imageLevel, setImageLevel] = useState<IFile | null>(null);
+  const [projectImage, setProjectImage] = useState<IFile | null>(null);
+  const [projectBgImage, setProjectBgImage] = useState<IFile | null>(null);
+  const [userImage, setUserImage] = useState<IFile | null>(null);
+  const [adminImage, setAdminImage] = useState<IFile | null>(null);
+  const [imageTags, setImageTags] = useState<IFile[] | undefined>([]);
+  const [userTags, setUserTags] = useState<string[] | null>([]);
+  const [adminTags, setAdminTags] = useState<string[] | null>([]);
+  const [projectTools, setProjectTools] = useState<string[] | null>([]);
+  const [projectTags, setProjectTags] = useState<string[] | null>([]);
   const onChange = (e: any) => {
-    setFormValue({ ...formValue, [e.target.name]: e.target.value });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
+  const [AddProject, { data, loading, error }] = useMutation(CREATE_PROJECT);
+  if (data) {
+    console.log("create project", data);
+  }
+  if (loading) return "Submitting...";
+  if (error) return `Submission error! ${error.message}`;
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    console.log(formValue);
-    console.log(tags);
+    AddProject({
+      variables: {
+        input: {
+          name: formData.name,
+          title: formData.title,
+          live_link: formData.live_link,
+          git_code_link: formData.git_code_link,
+          slug: "html",
+          category: "html",
+          start_date: "01-02-2022",
+          end_date: "02-05-2022",
+          image: projectImage?.secure_url,
+          bg_image: projectBgImage?.secure_url,
+          screenshots: imageTags,
+          tags: projectTags,
+          about: {
+            title: formData.about_title,
+            tools: projectTools,
+          },
+          admin_feature: {
+            image: adminImage?.secure_url,
+            tags: adminTags,
+          },
+          user_feature: {
+            image: userImage?.secure_url,
+            tags: userTags,
+          },
+          image_level: imageLevel?.secure_url,
+        },
+      },
+    });
   };
 
   return (
-    <React.Fragment>
+    <Box>
       <Typography variant="h6" gutterBottom>
         Shipping address
       </Typography>
       <Grid container spacing={3}>
-        <Grid md={6} sx={{ padding: "50px" }}>
+        <Grid xs={12} md={6} sx={{ padding: "20px" }}>
           <Grid item xs={12}>
             <TextField
               onChange={onChange}
@@ -64,7 +126,7 @@ export default function AddressForm() {
               required
               sx={{ mb: 1 }}
               id="city"
-              name="livelink"
+              name="live_link"
               label="project live link"
               fullWidth
               autoComplete="projectlivelink"
@@ -77,35 +139,52 @@ export default function AddressForm() {
               required
               sx={{ mb: 2 }}
               id="city"
-              name="githublink"
+              name="git_code_link"
               label="project code link"
               fullWidth
               autoComplete="shipping address-level2"
               variant="standard"
             />
           </Grid>
-          <ProjectTools onChange={onChange} />
-          <AddInputTags tags={tags} SetTags={SetTags} />
-          <ImageCarousel />
+          <ProjectTools onChange={onChange} setProjectTools={setProjectTools} />
+          <ProjectTags setProjectTags={setProjectTags} />
+
+          <ProjectImage
+            setProjectImage={setProjectImage}
+            setProjectBgImage={setProjectBgImage}
+            image={projectImage}
+            bgImage={projectBgImage}
+          />
         </Grid>
 
-        <Grid
-          md={6}
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            textAlign: "center",
-          }}
-        >
-          <ImageLevel />
-          <UserInputTags />
-          <AdminInputTags />
+        <Grid xs={12} md={6} sx={{ padding: "20px" }}>
+          <ImageLevel setImageLevel={setImageLevel} image={imageLevel} />
+          <UserFeature
+            setUserTags={setUserTags}
+            setUserImage={setUserImage}
+            image={userImage}
+          />
+          <AdminFeature
+            setAdminTags={setAdminTags}
+            setAdminImage={setAdminImage}
+            image={adminImage}
+          />
+          <ImageCarousel setImageTags={setImageTags} imageTags={imageTags} />
         </Grid>
-        <Button type="submit" onClick={handleSubmit}>
-          submit
-        </Button>
+        <Box>
+          <LoadingButton
+            sx={{ width: "200px", height: "50px", marginLeft: 10 }}
+            color="secondary"
+            onClick={handleSubmit}
+            // loading={loading}
+            loadingPosition="start"
+            startIcon={<SaveIcon />}
+            variant="contained"
+          >
+            Save
+          </LoadingButton>
+        </Box>
       </Grid>
-    </React.Fragment>
+    </Box>
   );
 }

@@ -7,7 +7,9 @@ import {
   InMemoryCache,
 } from "@apollo/client";
 import { onError } from "@apollo/client/link/error";
-const httpLink = new HttpLink({ uri: "http://localhost:4000/graphql" });
+import { REACT_APP_API_BASE_URL } from "../../lib/config";
+
+const httpLink = new HttpLink({ uri: REACT_APP_API_BASE_URL });
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors)
