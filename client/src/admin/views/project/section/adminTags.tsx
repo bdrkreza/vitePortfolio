@@ -1,73 +1,41 @@
-import PhotoCamera from "@mui/icons-material/PhotoCamera";
-import {
-  Autocomplete,
-  Avatar,
-  Box,
-  IconButton,
-  TextField,
-} from "@mui/material";
-import { styled } from "@mui/material/styles";
-import React from "react";
-import image from "../../../assets/01 (1).jpg";
-const Input = styled("input")({
-  display: "none",
-});
+import { Autocomplete, Chip, TextField } from "@mui/material";
+import { Dispatch, SetStateAction } from "react";
 
-export default function AdminInputTags() {
-  const [tags, SetTags] = React.useState(["plase", "do not"]);
-  console.log(tags);
-  const addTag = (e: any) => {
-    console.log(e.target.value);
-    if (e.key === "Enter") {
-      if (e.target.value.length > 0) {
-        SetTags([...tags, e.target.value]);
-        e.target.value = "";
-      }
-    }
-  };
+type Props = {
+  setAdminTags: Dispatch<SetStateAction<string[] | null>>;
+};
 
+export default function AdminInputTags({ setAdminTags }: Props) {
   return (
-    <div>
-      <Box
-        sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
-      >
-        <Avatar
-          src={image}
-          sx={{ width: "200px", height: "100%" }}
-          variant="rounded"
-        ></Avatar>
-        <label htmlFor="icon-button-file">
-          <Input accept="image/*" id="icon-button-file" type="file" />
-          <IconButton
-            color="primary"
-            aria-label="upload picture"
-            component="span"
-            sx={{
-              "& svg": {
-                width: 100,
-                height: 60,
-              },
-            }}
-          >
-            <PhotoCamera />
-          </IconButton>
-        </label>
-      </Box>
+    <>
       <Autocomplete
+        sx={{ pt: 3 }}
         multiple
-        id="tags-standard"
-        options={tags}
+        id="tags-filled"
+        options={adminTags.map((option: any) => option?.title)}
+        // defaultValue={[top100Films?.title]}
+        freeSolo
+        onChange={(e, tags: any) => setAdminTags(tags)}
+        renderTags={(value: readonly string[], getTagProps) =>
+          value.map((option: string, index: number) => (
+            <Chip
+              variant="outlined"
+              label={option}
+              {...getTagProps({ index })}
+            />
+          ))
+        }
         renderInput={(params) => (
-          <TextField
-            variant="standard"
-            sx={{ minWidth: "300px", display: "flex", flexWrap: "wrap" }}
-            {...params}
-            onKeyDown={addTag}
-            label="admin values"
-            placeholder="Favorites"
-          />
+          <TextField {...params} variant="filled" placeholder="Admin Tags" />
         )}
       />
-    </div>
+    </>
   );
 }
+
+const adminTags = [
+  { title: "admin List with add/Edit Modals" },
+  { title: "admin permissions with Complete CRUD" },
+  { title: "admin Roles with complete CRUD" },
+  { title: "full width or sidebar single pages" },
+];

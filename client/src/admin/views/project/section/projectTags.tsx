@@ -25,7 +25,7 @@ export default function ProjectTags({ setProjectTags }: Props) {
           ))
         }
         renderInput={(params) => (
-          <TextField {...params} variant="filled" label="project tags" />
+          <TextField {...params} variant="filled" placeholder="project tags" />
         )}
       />
     </div>

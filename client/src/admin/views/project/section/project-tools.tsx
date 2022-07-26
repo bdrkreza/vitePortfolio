@@ -1,17 +1,8 @@
 import { Autocomplete, Chip, TextField } from "@mui/material";
 
-export default function ProjectTools({ onChange, setProjectTools }: any) {
+export default function ProjectTools({ setProjectTools }: any) {
   return (
     <div>
-      <TextField
-        sx={{ mb: 2 }}
-        onChange={onChange}
-        fullWidth
-        name="about_title"
-        id="standard-basic"
-        label="about title"
-        variant="standard"
-      />
       <Autocomplete
         sx={{ mb: 3 }}
         multiple
@@ -29,7 +20,7 @@ export default function ProjectTools({ onChange, setProjectTools }: any) {
           ))
         }
         renderInput={(params) => (
-          <TextField {...params} variant="filled" label="project tools" />
+          <TextField {...params} variant="filled" placeholder="project tools" />
         )}
       />
     </div>

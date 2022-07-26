@@ -1,30 +1,18 @@
 import { useMutation } from "@apollo/client";
 import { PhotoCamera } from "@mui/icons-material";
 import CancelPresentationIcon from "@mui/icons-material/CancelPresentation";
-import {
-  Autocomplete,
-  Box,
-  Chip,
-  CircularProgress,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Box, CircularProgress, Typography } from "@mui/material";
 import { Dispatch, SetStateAction, useState } from "react";
 import { DELETE_IMAGE } from "../../../../services";
 import { uploadImage } from "../../../lib/uploadFile";
 import { IFile } from "./add-project-form";
 
 type Props = {
-  setAdminTags: Dispatch<SetStateAction<string[] | null>>;
   setAdminImage: Dispatch<SetStateAction<IFile | null>>;
   image: IFile | null;
 };
 
-export default function AdminFeature({
-  setAdminTags,
-  setAdminImage,
-  image,
-}: Props) {
+export default function AdminFeature({ setAdminImage, image }: Props) {
   const [deleteImage, { data, error }] = useMutation(DELETE_IMAGE);
   const [isUploading, setIsUploading] = useState(false);
   const onChangePicture = (e: any) => {
@@ -91,36 +79,9 @@ export default function AdminFeature({
           </>
         )}
       </Box>
-      <Autocomplete
-        multiple
-        id="tags-filled"
-        options={adminTags.map((option: any) => option?.title)}
-        // defaultValue={[top100Films?.title]}
-        freeSolo
-        onChange={(e, tags: any) => setAdminTags(tags)}
-        renderTags={(value: readonly string[], getTagProps) =>
-          value.map((option: string, index: number) => (
-            <Chip
-              variant="outlined"
-              label={option}
-              {...getTagProps({ index })}
-            />
-          ))
-        }
-        renderInput={(params) => (
-          <TextField {...params} variant="filled" placeholder="Admin Tags" />
-        )}
-      />
     </div>
   );
 }
-
-const adminTags = [
-  { title: "admin List with add/Edit Modals" },
-  { title: "admin permissions with Complete CRUD" },
-  { title: "admin Roles with complete CRUD" },
-  { title: "full width or sidebar single pages" },
-];
 
 const classes = {
   rootBox: {

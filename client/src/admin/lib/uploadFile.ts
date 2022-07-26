@@ -12,5 +12,5 @@ export const uploadImage = ({ file, successCallback }: any) => {
         "Content-Type": "multipart/form-data",
       },
     })
-    .then((response) => successCallback(response.data));
+    .then((response: any) => successCallback(response.data));
 };

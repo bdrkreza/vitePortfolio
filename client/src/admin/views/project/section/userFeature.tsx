@@ -1,30 +1,18 @@
 import { useMutation } from "@apollo/client";
 import { PhotoCamera } from "@mui/icons-material";
 import CancelPresentationIcon from "@mui/icons-material/CancelPresentation";
-import {
-  Autocomplete,
-  Box,
-  Chip,
-  CircularProgress,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Box, CircularProgress, Typography } from "@mui/material";
 import { Dispatch, SetStateAction, useState } from "react";
 import { DELETE_IMAGE } from "../../../../services";
 import { uploadImage } from "../../../lib/uploadFile";
 import { IFile } from "./add-project-form";
 
 type Props = {
-  setUserTags: Dispatch<SetStateAction<string[] | null>>;
   setUserImage: Dispatch<SetStateAction<IFile | null>>;
   image: IFile | null;
 };
 
-export default function UserFeature({
-  setUserTags,
-  setUserImage,
-  image,
-}: Props) {
+export default function UserFeature({ setUserImage, image }: Props) {
   const [deleteImage, { data, error }] = useMutation(DELETE_IMAGE);
   const [isUploading, setIsUploading] = useState(false);
   const onChangePicture = (e: any) => {
@@ -91,35 +79,9 @@ export default function UserFeature({
           </>
         )}
       </Box>
-      <Autocomplete
-        multiple
-        id="tags-filled"
-        options={userTags.map((option: any) => option?.title)}
-        freeSolo
-        onChange={(e, tags: any) => setUserTags(tags)}
-        renderTags={(value: readonly string[], getTagProps) =>
-          value.map((option: string, index: number) => (
-            <Chip
-              variant="outlined"
-              label={option}
-              {...getTagProps({ index })}
-            />
-          ))
-        }
-        renderInput={(params) => (
-          <TextField {...params} variant="filled" placeholder="User Tags" />
-        )}
-      />
     </div>
   );
 }
-
-const userTags = [
-  { title: "user can visit profile" },
-  { title: "user permissions with Complete order list" },
-  { title: "User can profile edit and add" },
-  { title: "user can review service provider" },
-];
 
 const classes = {
   rootBox: {

@@ -1,19 +1,20 @@
 import { useMutation } from "@apollo/client";
 import SaveIcon from "@mui/icons-material/Save";
-import { LoadingButton } from "@mui/lab";
-import { Box } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import { useState } from "react";
 import { CREATE_PROJECT } from "../../../../services";
 import AdminFeature from "./adminFeature";
+import AdminInputTags from "./adminTags";
 import ImageLevel from "./imageLevel";
 import ImageCarousel from "./project-image-carousel";
 import ProjectTools from "./project-tools";
 import ProjectImage from "./projectImage";
 import ProjectTags from "./projectTags";
 import UserFeature from "./userFeature";
+import UserInputTags from "./userTags";
 
 interface IFormData {
   name: string;
@@ -105,7 +106,7 @@ export default function AddProjectInputs() {
               label="project name"
               fullWidth
               autoComplete="project-title"
-              variant="standard"
+              variant="outlined"
             />
           </Grid>
           <Grid item xs={12}>
@@ -117,7 +118,7 @@ export default function AddProjectInputs() {
               label="project title"
               fullWidth
               autoComplete="project title"
-              variant="standard"
+              variant="outlined"
             />
           </Grid>
           <Grid item xs={12}>
@@ -130,7 +131,7 @@ export default function AddProjectInputs() {
               label="project live link"
               fullWidth
               autoComplete="projectlivelink"
-              variant="standard"
+              variant="outlined"
             />
           </Grid>
           <Grid item xs={12}>
@@ -143,12 +144,24 @@ export default function AddProjectInputs() {
               label="project code link"
               fullWidth
               autoComplete="shipping address-level2"
-              variant="standard"
+              variant="outlined"
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              sx={{ mb: 2 }}
+              onChange={onChange}
+              fullWidth
+              name="about_title"
+              id="standard-basic"
+              label="about title"
+              variant="outlined"
             />
           </Grid>
           <ProjectTools onChange={onChange} setProjectTools={setProjectTools} />
           <ProjectTags setProjectTags={setProjectTags} />
-
+          <UserInputTags setUserTags={setUserTags} />
+          <AdminInputTags setAdminTags={setAdminTags} />
           <ProjectImage
             setProjectImage={setProjectImage}
             setProjectBgImage={setProjectBgImage}
@@ -159,30 +172,22 @@ export default function AddProjectInputs() {
 
         <Grid xs={12} md={6} sx={{ padding: "20px" }}>
           <ImageLevel setImageLevel={setImageLevel} image={imageLevel} />
-          <UserFeature
-            setUserTags={setUserTags}
-            setUserImage={setUserImage}
-            image={userImage}
-          />
-          <AdminFeature
-            setAdminTags={setAdminTags}
-            setAdminImage={setAdminImage}
-            image={adminImage}
-          />
+          <UserFeature setUserImage={setUserImage} image={userImage} />
+          <AdminFeature setAdminImage={setAdminImage} image={adminImage} />
           <ImageCarousel setImageTags={setImageTags} imageTags={imageTags} />
         </Grid>
         <Box>
-          <LoadingButton
+          <Button
             sx={{ width: "200px", height: "50px", marginLeft: 10 }}
             color="secondary"
             onClick={handleSubmit}
             // loading={loading}
-            loadingPosition="start"
+
             startIcon={<SaveIcon />}
             variant="contained"
           >
             Save
-          </LoadingButton>
+          </Button>
         </Box>
       </Grid>
     </Box>
