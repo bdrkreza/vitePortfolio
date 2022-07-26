@@ -7,6 +7,7 @@ export default function UserInputTags({ setUserTags }: Props) {
   return (
     <>
       <Autocomplete
+        sx={{ mb: 3 }}
         multiple
         id="tags-filled"
         options={userTags.map((option: any) => option?.title)}

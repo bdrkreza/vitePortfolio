@@ -109,7 +109,7 @@ export default function ProjectImage({
                 <FaWindowClose
                   onClick={() => handleDelete(image?.public_id)}
                   style={{
-                    position: "fixed",
+                    position: "absolute",
                     cursor: "pointer",
                     color: "var(--color-text)",
                     height: 25,
@@ -165,13 +165,11 @@ export default function ProjectImage({
                 <FaWindowClose
                   onClick={() => handleBgDelete(bgImage.public_id)}
                   style={{
-                    position: "fixed",
+                    position: "absolute",
                     cursor: "pointer",
                     color: "var(--color-text)",
                     height: 25,
                     width: 25,
-                    marginTop: -120,
-                    marginLeft: 240,
                     zIndex: 2,
                   }}
                 />

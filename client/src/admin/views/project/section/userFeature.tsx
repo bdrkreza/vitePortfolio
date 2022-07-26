@@ -102,7 +102,7 @@ const classes = {
     height: "150px",
   },
   closeIcon: {
-    position: "fixed",
+    position: "absolute",
     cursor: "pointer",
     color: "var(--color-text)",
     height: 25,

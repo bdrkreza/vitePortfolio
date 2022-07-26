@@ -9,7 +9,7 @@ export default function AdminInputTags({ setAdminTags }: Props) {
   return (
     <>
       <Autocomplete
-        sx={{ pt: 3 }}
+        sx={{ mb: 5 }}
         multiple
         id="tags-filled"
         options={adminTags.map((option: any) => option?.title)}

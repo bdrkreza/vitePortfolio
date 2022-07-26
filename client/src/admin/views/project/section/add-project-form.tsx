@@ -8,6 +8,8 @@ import { useState } from "react";
 import { CREATE_PROJECT } from "../../../../services";
 import AdminFeature from "./adminFeature";
 import AdminInputTags from "./adminTags";
+import ProjectCategory from "./category_tags";
+import ProjectDatePicker from "./datePicker";
 import ImageLevel from "./imageLevel";
 import ImageCarousel from "./project-image-carousel";
 import ProjectTools from "./project-tools";
@@ -31,6 +33,11 @@ export type IFile = {
   public_id: string;
 };
 
+interface ICategory {
+  inputValue?: string;
+  title: string;
+}
+
 export default function AddProjectInputs() {
   const [formData, setFormData] = useState<IFormData>({} as IFormData);
   const [imageLevel, setImageLevel] = useState<IFile | null>(null);
@@ -43,7 +50,10 @@ export default function AddProjectInputs() {
   const [adminTags, setAdminTags] = useState<string[] | null>([]);
   const [projectTools, setProjectTools] = useState<string[] | null>([]);
   const [projectTags, setProjectTags] = useState<string[] | null>([]);
-  const onChange = (e: any) => {
+  const [projectCategory, setProjectCategory] = useState<ICategory | null>(
+    null
+  );
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -51,8 +61,8 @@ export default function AddProjectInputs() {
   if (data) {
     console.log("create project", data);
   }
-  if (loading) return "Submitting...";
-  if (error) return `Submission error! ${error.message}`;
+  if (loading) return <Box>Submitting...</Box>;
+  if (error) return <Box> Submission error!{error.message}</Box>;
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
@@ -63,10 +73,10 @@ export default function AddProjectInputs() {
           title: formData.title,
           live_link: formData.live_link,
           git_code_link: formData.git_code_link,
-          slug: "html",
-          category: "html",
-          start_date: "01-02-2022",
-          end_date: "02-05-2022",
+          slug: projectCategory?.title,
+          category: projectCategory?.title,
+          start_date: formData.start_date,
+          end_date: formData.end_date,
           image: projectImage?.secure_url,
           bg_image: projectBgImage?.secure_url,
           screenshots: imageTags,
@@ -96,10 +106,11 @@ export default function AddProjectInputs() {
       </Typography>
       <Grid container spacing={3}>
         <Grid xs={12} md={6} sx={{ padding: "20px" }}>
+          <ProjectDatePicker onChange={onChange} />
           <Grid item xs={12}>
             <TextField
               onChange={onChange}
-              sx={{ mb: 1 }}
+              sx={{ mb: 3 }}
               required
               id="title"
               name="name"
@@ -112,7 +123,7 @@ export default function AddProjectInputs() {
           <Grid item xs={12}>
             <TextField
               onChange={onChange}
-              sx={{ mb: 1 }}
+              sx={{ mb: 3 }}
               id="author"
               name="title"
               label="project title"
@@ -125,7 +136,7 @@ export default function AddProjectInputs() {
             <TextField
               onChange={onChange}
               required
-              sx={{ mb: 1 }}
+              sx={{ mb: 3 }}
               id="city"
               name="live_link"
               label="project live link"
@@ -138,7 +149,7 @@ export default function AddProjectInputs() {
             <TextField
               onChange={onChange}
               required
-              sx={{ mb: 2 }}
+              sx={{ mb: 3 }}
               id="city"
               name="git_code_link"
               label="project code link"
@@ -149,7 +160,7 @@ export default function AddProjectInputs() {
           </Grid>
           <Grid item xs={12}>
             <TextField
-              sx={{ mb: 2 }}
+              sx={{ mb: 3 }}
               onChange={onChange}
               fullWidth
               name="about_title"
@@ -158,20 +169,22 @@ export default function AddProjectInputs() {
               variant="outlined"
             />
           </Grid>
+          <ProjectCategory setProjectCategory={setProjectCategory} />
           <ProjectTools onChange={onChange} setProjectTools={setProjectTools} />
           <ProjectTags setProjectTags={setProjectTags} />
           <UserInputTags setUserTags={setUserTags} />
           <AdminInputTags setAdminTags={setAdminTags} />
+          <ImageLevel setImageLevel={setImageLevel} image={imageLevel} />
+        </Grid>
+
+        <Grid xs={12} md={6} sx={{ padding: "20px" }}>
           <ProjectImage
             setProjectImage={setProjectImage}
             setProjectBgImage={setProjectBgImage}
             image={projectImage}
             bgImage={projectBgImage}
           />
-        </Grid>
 
-        <Grid xs={12} md={6} sx={{ padding: "20px" }}>
-          <ImageLevel setImageLevel={setImageLevel} image={imageLevel} />
           <UserFeature setUserImage={setUserImage} image={userImage} />
           <AdminFeature setAdminImage={setAdminImage} image={adminImage} />
           <ImageCarousel setImageTags={setImageTags} imageTags={imageTags} />

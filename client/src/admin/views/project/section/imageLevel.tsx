@@ -80,7 +80,7 @@ export default function ImageLevel({ setImageLevel, image }: Props) {
                 <FaWindowClose
                   onClick={() => handleDelete(image?.public_id)}
                   style={{
-                    position: "fixed",
+                    position: "absolute",
                     cursor: "pointer",
                     color: "var(--color-text)",
                     height: 25,

@@ -60,7 +60,7 @@ export default function ImageCarousel({ setImageTags, imageTags }: Props) {
           border: 1,
           borderStyle: "dashed",
           width: "100%",
-          height: "150px",
+          height: "200px",
           maxWidth: "100%",
         }}
       >
@@ -70,7 +70,7 @@ export default function ImageCarousel({ setImageTags, imageTags }: Props) {
               onClick={() => deleteFile(index, img.public_id)}
               sx={{
                 width: "100px",
-                height: "100px",
+                height: "150px",
                 cursor: "pointer",
                 margin: 2,
               }}
@@ -81,29 +81,7 @@ export default function ImageCarousel({ setImageTags, imageTags }: Props) {
           ))}
         </AvatarGroup>
       </Box>
-      {/* <label htmlFor="icon-button-file">
-        <input
-          hidden
-          accept="image/*"
-          onChange={handleImageUpload}
-          id="icon-button-file"
-          type="file"
-          multiple
-        />
-        <IconButton
-          color="primary"
-          aria-label="upload picture"
-          component="span"
-          sx={{
-            "& svg": {
-              width: 100,
-              height: 60,
-            },
-          }}
-        >
-          <PhotoCamera />
-        </IconButton>
-      </label> */}
+
       <IconButton
         onClick={() => handleImageUpload()}
         color="primary"
