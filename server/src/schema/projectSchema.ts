@@ -34,7 +34,8 @@ type Project {
     image_level: String
     tags: [String]
     rating: Float!
-    date: String
+    start_date: String
+    end_date: String
     user_feature: AuthFeature
     admin_feature: AuthFeature
     about: About

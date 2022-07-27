@@ -1,18 +1,18 @@
 import { useMutation } from "@apollo/client";
 import { PhotoCamera } from "@mui/icons-material";
+import CancelPresentationIcon from "@mui/icons-material/CancelPresentation";
 import { Box, CircularProgress, Typography } from "@mui/material";
 import { Dispatch, SetStateAction, useState } from "react";
-import { FaWindowClose } from "react-icons/fa";
 import { DELETE_IMAGE } from "../../../../services";
 import { uploadImage } from "../../../lib/uploadFile";
 import { IFile } from "./add-project-form";
 
 type Props = {
-  setImageLevel: Dispatch<SetStateAction<IFile | null>>;
+  setAdminImage: Dispatch<SetStateAction<IFile | null>>;
   image: IFile | null;
 };
 
-export default function ImageLevel({ setImageLevel, image }: Props) {
+export default function AdminFeature({ setAdminImage, image }: Props) {
   const [deleteImage, { data, error }] = useMutation(DELETE_IMAGE);
   const [isUploading, setIsUploading] = useState(false);
   const onChangePicture = (e: any) => {
@@ -22,7 +22,7 @@ export default function ImageLevel({ setImageLevel, image }: Props) {
       uploadImage({
         file: file,
         successCallback: (data: any) => {
-          setImageLevel(data);
+          setAdminImage(data);
           setIsUploading(false);
           console.log("Image uploaded successfully.");
         },
@@ -31,7 +31,7 @@ export default function ImageLevel({ setImageLevel, image }: Props) {
   };
 
   const handleDelete = (id: any) => {
-    setImageLevel(null);
+    setAdminImage(null);
     deleteImage({
       variables: {
         deleteImageId: id,
@@ -42,51 +42,32 @@ export default function ImageLevel({ setImageLevel, image }: Props) {
   if (data) {
     console.log("image delete successfully", data);
   }
-  console.log(error);
 
+  console.log(error);
   return (
     <div>
-      <Box
-        sx={{
-          mt: 3,
-          display: "flex",
-          height: "200px",
-          minWidth: "100%",
-          maxWidth: "100%",
-          justifyContent: "center",
-          border: 1,
-          borderStyle: "dashed",
-          alignItems: "center",
-          position: "relative",
-        }}
-      >
+      <Box sx={classes.rootBox}>
         {isUploading ? (
           <CircularProgress style={{ position: "absolute", zIndex: 1 }} />
         ) : (
           <>
             <div className="file-Upload">
-              <PhotoCamera
-                sx={{ color: "var(--info)", width: "60px", height: "150px" }}
-              />
-              <Typography sx={{ marginTop: -5 }}>
-                Project Image level
-              </Typography>
+              <PhotoCamera sx={classes.photo} />
+              <Typography sx={{ marginTop: -5 }}>admin Image</Typography>
               <div className="file btn w-100 btn-primary">
-                <input onChange={onChangePicture} type="file" name="file" />
+                <input
+                  onChange={onChangePicture}
+                  type="file"
+                  name="file"
+                  required
+                />
               </div>
             </div>
             {image && (
               <>
-                <FaWindowClose
+                <CancelPresentationIcon
                   onClick={() => handleDelete(image?.public_id)}
-                  style={{
-                    position: "absolute",
-                    cursor: "pointer",
-                    color: "var(--color-text)",
-                    height: 25,
-                    width: 25,
-                    zIndex: 2,
-                  }}
+                  sx={classes.closeIcon}
                 />
                 <img
                   style={{
@@ -106,3 +87,31 @@ export default function ImageLevel({ setImageLevel, image }: Props) {
     </div>
   );
 }
+
+const classes = {
+  rootBox: {
+    mt: 3,
+    display: "flex",
+    height: "200px",
+    minWidth: "100%",
+    maxWidth: "100%",
+    justifyContent: "center",
+    border: 1,
+    borderStyle: "dashed",
+    alignItems: "center",
+    position: "relative",
+  },
+  photo: {
+    color: "var(--info)",
+    width: "60px",
+    height: "150px",
+  },
+  closeIcon: {
+    position: "absolute",
+    cursor: "pointer",
+    color: "var(--color-text)",
+    height: 25,
+    width: 25,
+    zIndex: 2,
+  },
+};

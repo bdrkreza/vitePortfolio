@@ -1,18 +1,18 @@
 import { useMutation } from "@apollo/client";
 import { PhotoCamera } from "@mui/icons-material";
-import CancelPresentationIcon from "@mui/icons-material/CancelPresentation";
 import { Box, CircularProgress, Typography } from "@mui/material";
 import { Dispatch, SetStateAction, useState } from "react";
+import { FaWindowClose } from "react-icons/fa";
 import { DELETE_IMAGE } from "../../../../services";
 import { uploadImage } from "../../../lib/uploadFile";
 import { IFile } from "./add-project-form";
 
 type Props = {
-  setAdminImage: Dispatch<SetStateAction<IFile | null>>;
+  setImageLevel: Dispatch<SetStateAction<IFile | null>>;
   image: IFile | null;
 };
 
-export default function AdminFeature({ setAdminImage, image }: Props) {
+export default function ImageLevel({ setImageLevel, image }: Props) {
   const [deleteImage, { data, error }] = useMutation(DELETE_IMAGE);
   const [isUploading, setIsUploading] = useState(false);
   const onChangePicture = (e: any) => {
@@ -22,7 +22,7 @@ export default function AdminFeature({ setAdminImage, image }: Props) {
       uploadImage({
         file: file,
         successCallback: (data: any) => {
-          setAdminImage(data);
+          setImageLevel(data);
           setIsUploading(false);
           console.log("Image uploaded successfully.");
         },
@@ -31,7 +31,7 @@ export default function AdminFeature({ setAdminImage, image }: Props) {
   };
 
   const handleDelete = (id: any) => {
-    setAdminImage(null);
+    setImageLevel(null);
     deleteImage({
       variables: {
         deleteImageId: id,
@@ -42,27 +42,56 @@ export default function AdminFeature({ setAdminImage, image }: Props) {
   if (data) {
     console.log("image delete successfully", data);
   }
-
   console.log(error);
+
   return (
     <div>
-      <Box sx={classes.rootBox}>
+      <Box
+        sx={{
+          mt: 3,
+          display: "flex",
+          height: "200px",
+          minWidth: "100%",
+          maxWidth: "100%",
+          justifyContent: "center",
+          border: 1,
+          borderStyle: "dashed",
+          alignItems: "center",
+          position: "relative",
+        }}
+      >
         {isUploading ? (
           <CircularProgress style={{ position: "absolute", zIndex: 1 }} />
         ) : (
           <>
             <div className="file-Upload">
-              <PhotoCamera sx={classes.photo} />
-              <Typography sx={{ marginTop: -5 }}>admin Image</Typography>
+              <PhotoCamera
+                sx={{ color: "var(--info)", width: "60px", height: "150px" }}
+              />
+              <Typography sx={{ marginTop: -5 }}>
+                Project Image level
+              </Typography>
               <div className="file btn w-100 btn-primary">
-                <input onChange={onChangePicture} type="file" name="file" />
+                <input
+                  onChange={onChangePicture}
+                  type="file"
+                  name="file"
+                  required
+                />
               </div>
             </div>
             {image && (
               <>
-                <CancelPresentationIcon
+                <FaWindowClose
                   onClick={() => handleDelete(image?.public_id)}
-                  sx={classes.closeIcon}
+                  style={{
+                    position: "absolute",
+                    cursor: "pointer",
+                    color: "var(--color-text)",
+                    height: 25,
+                    width: 25,
+                    zIndex: 2,
+                  }}
                 />
                 <img
                   style={{
@@ -82,31 +111,3 @@ export default function AdminFeature({ setAdminImage, image }: Props) {
     </div>
   );
 }
-
-const classes = {
-  rootBox: {
-    mt: 3,
-    display: "flex",
-    height: "200px",
-    minWidth: "100%",
-    maxWidth: "100%",
-    justifyContent: "center",
-    border: 1,
-    borderStyle: "dashed",
-    alignItems: "center",
-    position: "relative",
-  },
-  photo: {
-    color: "var(--info)",
-    width: "60px",
-    height: "150px",
-  },
-  closeIcon: {
-    position: "absolute",
-    cursor: "pointer",
-    color: "var(--color-text)",
-    height: 25,
-    width: 25,
-    zIndex: 2,
-  },
-};

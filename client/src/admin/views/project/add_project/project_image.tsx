@@ -101,7 +101,12 @@ export default function ProjectImage({
               />
               <Typography sx={{ marginTop: -5 }}>Project Image</Typography>
               <div className="file btn w-100 btn-primary">
-                <input onChange={onChangePicture} type="file" name="file" />
+                <input
+                  onChange={onChangePicture}
+                  type="file"
+                  name="file"
+                  required
+                />
               </div>
             </div>
             {image && (
@@ -156,7 +161,12 @@ export default function ProjectImage({
               />
 
               <div className="file btn w-100 btn-primary">
-                <input onChange={onChangeBgPicture} type="file" name="file" />
+                <input
+                  onChange={onChangeBgPicture}
+                  type="file"
+                  name="file"
+                  required
+                />
                 <Typography sx={{ marginTop: -5 }}>Project bg Image</Typography>
               </div>
             </div>

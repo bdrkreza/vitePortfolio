@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import AddProjectInputs from "./section/add-project-form";
+import AddProjectInputs from "./add_project/add-project-form";
 
 export default function AddProject() {
   return (

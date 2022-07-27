@@ -151,7 +151,6 @@ const createProject = {
   name: "project",
   description: "create project and return project ",
   async resolve(_, { input }, { user }) {
-    console.log(input);
     try {
       // if (!user || !user.role.includes("admin")) {
       //   return new AuthenticationError("you must be logged in");

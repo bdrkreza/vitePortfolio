@@ -55,7 +55,12 @@ export default function UserFeature({ setUserImage, image }: Props) {
               <PhotoCamera sx={classes.photo} />
               <Typography sx={{ marginTop: -5 }}>User Image</Typography>
               <div className="file btn w-100 btn-primary">
-                <input onChange={onChangePicture} type="file" name="file" />
+                <input
+                  onChange={onChangePicture}
+                  type="file"
+                  name="file"
+                  required
+                />
               </div>
             </div>
             {image && (

@@ -2,10 +2,11 @@ import AddIcon from "@mui/icons-material/Add";
 import { Button, Grid, Stack, Typography } from "@mui/material";
 import { Fragment } from "react";
 import { Link } from "react-router-dom";
+import { data } from "../../../core-ui/home_two/project/project";
 
-import AppProjectCard from "./section/appProjectCard";
-import ProjectSearch from "./section/projectSearch";
-import ProjectSort from "./section/projectSort";
+import AppProjectCard from "./project/appProjectCard";
+import ProjectSearch from "./project/projectSearch";
+import ProjectSort from "./project/projectSort";
 const SORT_OPTIONS = [
   { value: "latest", label: "Latest" },
   { value: "popular", label: "Popular" },
@@ -45,9 +46,9 @@ export default function AppProject() {
         spacing={{ xs: 2, md: 3 }}
         columns={{ xs: 4, sm: 8, md: 12 }}
       >
-        {[1, 2, 3].map((_, index) => (
+        {data.map((data, index) => (
           <Grid item xs={2} sm={4} md={4} sx={{ mt: 5 }} key={index}>
-            <AppProjectCard key={index} />
+            <AppProjectCard key={index} data={data} />
           </Grid>
         ))}
       </Grid>
